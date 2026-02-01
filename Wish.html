@@ -2,253 +2,581 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Premium Valentine Wish ❤️</title>
+<title>Valentine Surprise ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root {
-  --primary: #ff4d6d;
-  --glass: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.4);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  height:100vh;
-  background: linear-gradient(45deg, #ff758c, #ff7eb3, #fd3535);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, #ff4d6d, #ff758c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-/* Glassmorphism Card Style */
-.container, .card {
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid var(--glass-border);
-  border-radius: 25px;
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   text-align: center;
   color: white;
   width: 90%;
   max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.page { position: absolute; display: none; width: 100%; justify-content: center; }
-.page.active { display: flex; animation: zoomIn 0.8s ease forwards; }
-
-@keyframes zoomIn {
-  from {opacity: 0; transform: scale(0.8);}
-  to {opacity: 1; transform: scale(1);}
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-h1 { font-size: 1.8rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-p { font-size: 1rem; line-height: 1.6; margin-bottom: 20px; white-space: pre-wrap; }
-
-/* Photo Frame */
-.photo-frame {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 4px solid white;
-  margin: 0 auto 15px;
-  overflow: hidden;
-  background: #eee;
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 80px;
 }
-.photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Buttons */
+.input-group {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  text-align: center;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ff4d6d;
+  box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+}
+
 button {
-  padding: 12px 25px;
+  padding: 15px 30px;
   border: none;
   border-radius: 50px;
   background: white;
-  color: var(--primary);
+  color: #ff4d6d;
   font-weight: bold;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
 
-/* Input Styles */
-input {
-  width: 80%;
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  min-height: 60px;
+}
+
+#noBtn {
+  position: absolute;
+  background: #ff4d6d;
+  color: white;
+  border: 2px solid white;
+}
+
+/* Love Rain Animation */
+.love-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.love-drop {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  animation: fall linear infinite;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  animation: confettiFall 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 1001;
+  border-radius: 50%;
+}
+
+@keyframes confettiFall {
+  0% { transform: translate(0, 0) rotateZ(0deg); opacity: 1; }
+  100% { transform: translate(var(--x), 100vh) rotateZ(var(--deg)); opacity: 0; }
+}
+
+/* Heart Pop Effect */
+.heart-pop {
+  position: absolute;
+  font-size: 30px;
+  animation: pop 1s ease-out forwards;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.share-section {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.link-box {
+  word-break: break-all;
+  background: rgba(0,0,0,0.2);
   padding: 10px;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 10px;
-  outline: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: white;
 }
 
-/* Question Section */
-.btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 20px; position: relative; }
-#noBtn { position: relative; background: #ff4d6d; color: white; }
+.share-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
 
-/* Hearts & Sparkles */
-.heart { position: fixed; font-size: 20px; animation: fall linear forwards; pointer-events: none; }
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+.share-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.whatsapp-btn { background: #25D366; color: white; }
+.copy-btn { background: #555; color: white; }
+
+/* Typewriter cursor effect */
+.typewriter {
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: rgba(255, 255, 255, 0.8); }
+}
+
+/* Romantic text styles */
+.romantic-text {
+  color: #ffeb3b;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+.large-heart {
+  font-size: 40px;
+  margin: 15px 0;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 </style>
 </head>
 <body>
 
+<!-- Love Rain Container -->
+<div class="love-rain" id="loveRain"></div>
+
+<!-- Input Page -->
 <div class="container" id="inputPage">
-  <h1>💖 Create Wish 💖</h1>
-  <input type="text" id="fromInput" placeholder="Your Name">
-  <input type="date" id="dateInput" title="When did you first meet?">
-  <p style="font-size: 0.8rem;">(Select the date you first met)</p>
-  <button onclick="generateLink()">Generate Magic Link</button>
-  <div id="linkBox" style="margin-top:15px; font-size: 12px; color: #fff;"></div>
-</div>
-
-<div class="page" id="p1">
-  <div class="card">
-    <div class="photo-frame">
-      <img src="https://cdn-icons-png.flaticon.com/512/4359/4359914.png" alt="Couple">
-    </div>
-    <h1>Happy Valentine's!</h1>
-    <p id="welcome"></p>
-    <button onclick="nextPage()">Open My Heart</button>
+  <h1>💖 Create Valentine Wish 💖</h1>
+  
+  <div class="input-group">
+    <input type="text" id="creatorName" placeholder="Your Name (যিনি দিচ্ছেন)" required>
+    <input type="text" id="partnerName" placeholder="Their Name (যিনি পাবেন)" required>
   </div>
-</div>
-
-<div class="page" id="p2">
-  <div class="card">
-    <h1>Our Journey ⏳</h1>
-    <div id="counter" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;"></div>
-    <p id="msg2"></p>
-    <button onclick="nextPage()">Next ❤️</button>
-  </div>
-</div>
-
-<div class="page" id="p3">
-  <div class="card">
-    <h1>My Promise 🤝</h1>
-    <p id="msg3"></p>
-    <button onclick="nextPage()">One More Thing...</button>
-  </div>
-</div>
-
-<div class="page" id="p4">
-  <div class="card">
-    <h1>A Question... 💍</h1>
-    <p>Will you be my Valentine forever?</p>
-    <div class="btn-group">
-      <button onclick="beValentine()">Yes!</button>
-      <button id="noBtn" onmouseover="moveNo()">No</button>
+  
+  <button onclick="createWish()">
+    Create Beautiful Wish ❤️
+  </button>
+  
+  <div class="share-section" id="shareSection">
+    <p style="font-size: 14px;">Share this special wish:</p>
+    <div class="link-box" id="linkBox"></div>
+    
+    <div class="share-buttons">
+      <button class="share-btn copy-btn" onclick="copyLink()">
+        📋 Copy Link
+      </button>
+      <button class="share-btn whatsapp-btn" onclick="shareWhatsApp()">
+        📱 WhatsApp
+      </button>
     </div>
   </div>
 </div>
 
-<div class="page" id="p5">
-  <div class="card">
-    <h1>Yay! ❤️🌹</h1>
-    <p id="finalMsg"></p>
-    <div style="font-size: 50px;">💑</div>
-    <p id="fromText" style="margin-top: 20px; font-weight: bold;"></p>
+<!-- Wish Pages -->
+<div class="container page" id="page1" style="display: none;">
+  <h1 id="page1Title"></h1>
+  <p id="page1Text" class="typewriter"></p>
+  <button onclick="nextPage()">
+    Continue ❤️
+  </button>
+</div>
+
+<div class="container page" id="page2" style="display: none;">
+  <h1>Every Moment with You 💫</h1>
+  <p id="page2Text" class="typewriter"></p>
+  <button onclick="nextPage()">
+    Next Page 💝
+  </button>
+</div>
+
+<div class="container page" id="page3" style="display: none;">
+  <h1>My Promise to You 🤝</h1>
+  <p id="page3Text" class="typewriter"></p>
+  <button onclick="nextPage()">
+    Continue 🌹
+  </button>
+</div>
+
+<div class="container page" id="page4" style="display: none;">
+  <h1>A Special Question... 💍</h1>
+  <p>Will you be my Valentine forever?</p>
+  <div class="btn-group">
+    <button onclick="beMyValentine()" style="background: #ff4d6d; color: white;">
+      Yes! Forever ❤️
+    </button>
+    <button id="noBtn" onmouseover="moveNoButton()">
+      No
+    </button>
   </div>
+</div>
+
+<div class="container page" id="page5" style="display: none;">
+  <h1>❤️ You Said Yes! ❤️</h1>
+  <div class="large-heart">💖</div>
+  <p id="finalMessage" class="typewriter"></p>
+  <p id="signature" style="font-weight: bold; margin-top: 20px;"></p>
+  <button onclick="shareAgain()" style="margin-top: 20px;">
+    Share This Happiness 💌
+  </button>
 </div>
 
 <script>
-let i=1;
-let startDate = "";
+let currentPage = 0;
+const totalPages = 5;
+let creatorName = "";
+let partnerName = "";
+let isWishActive = false;
 
-function generateLink(){
-  const name = document.getElementById("fromInput").value.trim();
-  const date = document.getElementById("dateInput").value;
-  if(!name || !date){alert("Please fill name and date!"); return;}
+// Start love rain immediately
+startLoveRain();
+
+// Start heart pops occasionally
+setInterval(createHeartPop, 2000);
+
+function startLoveRain() {
+  const rainContainer = document.getElementById('loveRain');
+  const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
   
-  const url = window.location.origin + window.location.pathname + 
-              `?from=${encodeURIComponent(name)}&date=${date}`;
-  document.getElementById("linkBox").innerHTML = `Share this: <br><a href="${url}" style="color:yellow;">${url}</a>`;
-}
-
-function typeWriter(element, text, speed=40){
-  let index=0;
-  element.innerHTML="";
-  const interval=setInterval(()=>{
-    element.innerHTML+=text.charAt(index);
-    index++;
-    if(index>=text.length) clearInterval(interval);
-  },speed);
-}
-
-function updateCounter(dateStr) {
-  const start = new Date(dateStr);
-  const now = new Date();
-  const diffTime = Math.abs(now - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  document.getElementById("counter").innerHTML = `We have been together for<br><span style="font-size:2rem;">${diffDays}</span><br>Beautiful Days!`;
-}
-
-function nextPage(){
-  document.getElementById("p"+i).classList.remove("active");
-  i++;
-  document.getElementById("p"+i).classList.add("active");
+  // Create initial hearts
+  for(let i = 0; i < 30; i++) {
+    createRainHeart();
+  }
   
-  if(i==2) {
-    updateCounter(startDate);
-    typeWriter(document.getElementById("msg2"), "Every single day with you feels like a blessing. I cherish every moment we spend together.");
-  }
-  if(i==3) {
-    typeWriter(document.getElementById("msg3"), "I promise to be your strength when you are weak, and your smile when you are sad. You are my everything.");
-  }
-}
-
-function moveNo() {
-  const btn = document.getElementById("noBtn");
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  btn.style.position = "fixed";
-  btn.style.left = x + "px";
-  btn.style.top = y + "px";
-}
-
-function beValentine() {
-  document.getElementById("p4").classList.remove("active");
-  document.getElementById("p5").classList.add("active");
-  typeWriter(document.getElementById("finalMsg"), "You just made me the happiest person on earth! I love you so much! ❤️");
-  roseRain();
-}
-
-function heart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText=["❤️","💖","✨","🌸"][Math.floor(Math.random()*4)];
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(2+Math.random()*3)+"s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-}
-setInterval(heart,300);
-
-function roseRain(){
-  for(let j=0; j<100; j++){
-    setTimeout(heart, j*50);
+  // Add new hearts regularly
+  setInterval(createRainHeart, 300);
+  
+  function createRainHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'love-drop';
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (3 + Math.random() * 4) + 's';
+    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+    heart.style.opacity = 0.3 + Math.random() * 0.7;
+    
+    rainContainer.appendChild(heart);
+    
+    // Remove after animation
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
   }
 }
 
-window.onload = function(){
-  const params=new URLSearchParams(window.location.search);
-  const name=params.get("from");
-  startDate=params.get("date");
-  if(name && startDate){
-    document.getElementById("inputPage").style.display="none";
-    document.getElementById("p1").classList.add("active");
-    typeWriter(document.getElementById("welcome"), `Dear My Love,\nYou are the most special person in my life. This is for you...`);
-    document.getElementById("fromText").innerText=`With Love, ${name}`;
+function createHeartPop() {
+  if (!isWishActive) return;
+  
+  const heart = document.createElement('div');
+  heart.className = 'heart-pop';
+  heart.innerHTML = '💖';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.top = Math.random() * 100 + 'vh';
+  heart.style.color = ['#ff4d6d', '#ff8fab', '#ffffff'][Math.floor(Math.random() * 3)];
+  
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+    heart.remove();
+  }, 1000);
+}
+
+function createWish() {
+  creatorName = document.getElementById('creatorName').value.trim();
+  partnerName = document.getElementById('partnerName').value.trim();
+  
+  if (!creatorName || !partnerName) {
+    alert('Please enter both names!');
+    return;
   }
+  
+  // Generate sharing link
+  const baseUrl = window.location.origin + window.location.pathname;
+  const url = `${baseUrl}?creator=${encodeURIComponent(creatorName)}&partner=${encodeURIComponent(partnerName)}`;
+  
+  // Show share section
+  document.getElementById('shareSection').style.display = 'block';
+  document.getElementById('linkBox').innerText = url;
+  
+  // Save for sharing
+  window.currentGeneratedUrl = url;
+  window.waLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Hello ${partnerName}! ❤️ I have a special Valentine's wish for you. Click here: ${url}`)}`;
+  
+  // Auto start wish if names are provided in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('creator') && urlParams.get('partner')) {
+    startWish();
+  }
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.currentGeneratedUrl);
+  alert('Link copied! Send it to your loved one. ❤️');
+}
+
+function shareWhatsApp() {
+  window.open(window.waLink, '_blank');
+}
+
+function startWish() {
+  const urlParams = new URLSearchParams(window.location.search);
+  creatorName = urlParams.get('creator') || creatorName;
+  partnerName = urlParams.get('partner') || partnerName;
+  
+  if (!creatorName || !partnerName) return;
+  
+  isWishActive = true;
+  document.getElementById('inputPage').style.display = 'none';
+  document.getElementById('page1').style.display = 'block';
+  currentPage = 1;
+  
+  // Start typewriter effects
+  typeWriter('page1Title', `For My Dear ${partnerName}... ❤️`, 50);
+  typeWriter('page1Text', `Today, on this special day, I want to tell you something from the bottom of my heart...`, 40);
+}
+
+function typeWriter(elementId, text, speed = 40) {
+  const element = document.getElementById(elementId);
+  element.classList.remove('typewriter');
+  element.innerHTML = '';
+  
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    } else {
+      element.classList.add('typewriter');
+    }
+  }
+  type();
+}
+
+function nextPage() {
+  document.getElementById(`page${currentPage}`).style.display = 'none';
+  currentPage++;
+  
+  if (currentPage > totalPages) {
+    currentPage = 1;
+  }
+  
+  const pageElement = document.getElementById(`page${currentPage}`);
+  pageElement.style.display = 'block';
+  
+  // Add content based on page
+  switch(currentPage) {
+    case 2:
+      typeWriter('page2Text', `Every single moment with you feels magical, ${partnerName}. Your smile lights up my world and your presence makes everything better. I cherish every memory we've created together.`, 30);
+      break;
+    case 3:
+      typeWriter('page3Text', `I promise to always stand by your side, to support your dreams, to make you laugh, and to love you more with each passing day. You are my everything, ${partnerName}.`, 30);
+      break;
+    case 4:
+      // Question page - no typewriter needed
+      break;
+    case 5:
+      typeWriter('finalMessage', `You've made me the happiest person in the world! This Valentine's Day, I want you to know that my love for you grows stronger every single day. Thank you for being my everything. ❤️`, 30);
+      document.getElementById('signature').innerText = `With all my love,\n${creatorName}`;
+      break;
+  }
+}
+
+function moveNoButton() {
+  const btn = document.getElementById('noBtn');
+  const container = document.querySelector('.container');
+  const containerRect = container.getBoundingClientRect();
+  
+  const maxX = containerRect.width - 100;
+  const maxY = containerRect.height - 50;
+  
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+  
+  btn.style.position = 'absolute';
+  btn.style.left = `${randomX}px`;
+  btn.style.top = `${randomY}px`;
+  
+  // Add funny messages
+  const messages = ["Are you sure?", "Think again!", "Really?", "Try again!", "Click Yes!"];
+  btn.innerText = messages[Math.floor(Math.random() * messages.length)];
+}
+
+function beMyValentine() {
+  // Create confetti explosion
+  createConfettiExplosion();
+  
+  // Increase love rain
+  for(let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      createSpecialHeart();
+    }, i * 50);
+  }
+  
+  // Go to final page
+  setTimeout(() => {
+    nextPage();
+  }, 1500);
+}
+
+function createConfettiExplosion() {
+  const colors = ['#ff4d6d', '#ff8fab', '#ffffff', '#ffeb3b', '#c9ffbf'];
+  
+  for(let i = 0; i < 100; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = '50%';
+      confetti.style.top = '50%';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
+      confetti.style.setProperty('--deg', `${Math.random() * 720}deg`);
+      
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => {
+        confetti.remove();
+      }, 2000);
+    }, i * 10);
+  }
+}
+
+function createSpecialHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'love-drop';
+  heart.innerHTML = '💖';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = '2s';
+  heart.style.fontSize = '30px';
+  heart.style.color = '#ffeb3b';
+  heart.style.textShadow = '0 0 20px #ffeb3b';
+  
+  document.getElementById('loveRain').appendChild(heart);
+  
+  setTimeout(() => {
+    heart.remove();
+  }, 2000);
+}
+
+function shareAgain() {
+  document.getElementById('page5').style.display = 'none';
+  document.getElementById('inputPage').style.display = 'block';
+  document.getElementById('shareSection').style.display = 'block';
+  
+  // Highlight the link
+  const linkBox = document.getElementById('linkBox');
+  linkBox.style.animation = 'none';
+  setTimeout(() => {
+    linkBox.style.animation = 'pulse 1s 3';
+  }, 10);
+}
+
+// Check URL parameters on load
+window.onload = function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('creator') && urlParams.get('partner')) {
+    creatorName = urlParams.get('creator');
+    partnerName = urlParams.get('partner');
+    startWish();
+  }
+  
+  // Add pulse animation for link box
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  `;
+  document.head.appendChild(style);
 };
 </script>
 </body>
