@@ -2,109 +2,389 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine Surprise ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Week Special 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary-pink: #ff4d6d;
+  --secondary-pink: #ff758c;
+  --accent-yellow: #ffeb3b;
+  --glass-white: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-white: rgba(255, 255, 255, 0.95);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 body {
-  height: 100vh;
-  background: linear-gradient(180deg, #ff4d6d, #ff758c);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 50%, #ff8fa3 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
+  padding: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  background: rgba(255, 255, 255, 0.15);
+/* Glassmorphism Background */
+.glass-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  text-align: center;
-  color: white;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  z-index: 10;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Main Container */
+.container {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--text-white);
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+  z-index: 10;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Typography */
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 20px;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 12px;
+  line-height: 1.3;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+  border-radius: 3px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: var(--accent-yellow);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
 }
 
 p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.5;
   margin-bottom: 20px;
-  min-height: 80px;
+  opacity: 0.95;
 }
 
+/* Input Fields */
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
 }
 
 input {
   width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  text-align: center;
-  transition: 0.3s;
+  padding: 16px 16px 16px 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.95rem;
+  text-align: left;
+  transition: all 0.25s ease;
+  color: white;
+  font-weight: 500;
+  -webkit-appearance: none;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 input:focus {
   outline: none;
-  border-color: #ff4d6d;
-  box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
-button {
-  padding: 15px 30px;
+/* Buttons */
+.glass-btn {
+  padding: 16px 24px;
   border: none;
-  border-radius: 50px;
-  background: white;
-  color: #ff4d6d;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-  position: relative;
-  min-height: 60px;
-}
-
-#noBtn {
-  position: absolute;
-  background: #ff4d6d;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
   color: white;
-  border: 2px solid white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin: 8px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 100%;
+  touch-action: manipulation;
+}
+
+.glass-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.glass-btn i {
+  font-size: 1.1rem;
+}
+
+/* Button Variations */
+.btn-primary {
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.85), rgba(255, 117, 140, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.85), rgba(37, 211, 102, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(85, 85, 85, 0.85), rgba(85, 85, 85, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, rgba(255, 64, 129, 0.85), rgba(255, 64, 129, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Day Cards Grid */
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+@media (min-width: 480px) {
+  .day-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.day-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+}
+
+.day-card:active {
+  transform: scale(0.97);
+}
+
+.day-card.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 235, 59, 0.6);
+  box-shadow: 0 5px 15px rgba(255, 235, 59, 0.2);
+  transform: scale(1.05);
+}
+
+.day-emoji {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.day-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  white-space: nowrap;
+}
+
+.day-date {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Share Page Specific Styles */
+.share-page {
+  max-width: 480px;
+}
+
+.share-icon {
+  font-size: 56px;
+  margin: 20px 0;
+  animation: bounce 2s infinite;
+  color: rgba(255, 235, 59, 0.9);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.link-box {
+  word-break: break-all;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: white;
+  font-family: monospace;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  text-align: left;
+  max-height: 100px;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+.share-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+@media (min-width: 480px) {
+  .share-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.share-btn {
+  padding: 14px 16px;
+  font-size: 13px;
+  border-radius: 12px;
+  min-height: 48px;
+}
+
+/* Instruction Steps */
+.steps-container {
+  text-align: left;
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border-left: 4px solid rgba(255, 235, 59, 0.5);
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin: 14px 0;
+}
+
+.step-number {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: bold;
+  font-size: 13px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(255, 77, 109, 0.3);
+}
+
+.step-content {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Message Box */
+.message-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  text-align: left;
+  border-left: 4px solid rgba(255, 64, 129, 0.5);
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 /* Love Rain Animation */
@@ -120,10 +400,11 @@ button:hover {
 
 .love-drop {
   position: absolute;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
   animation: fall linear infinite;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  opacity: 0.6;
 }
 
 @keyframes fall {
@@ -136,8 +417,8 @@ button:hover {
 /* Confetti */
 .confetti {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background-color: #fff;
   animation: confettiFall 2s ease-out forwards;
   pointer-events: none;
@@ -153,7 +434,7 @@ button:hover {
 /* Heart Pop Effect */
 .heart-pop {
   position: absolute;
-  font-size: 30px;
+  font-size: 24px;
   animation: pop 1s ease-out forwards;
   pointer-events: none;
   z-index: 1000;
@@ -165,39 +446,53 @@ button:hover {
   100% { transform: scale(1); opacity: 0; }
 }
 
-.share-section {
-  display: none;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+/* Valentine Card Page Styles */
+.day-symbol {
+  font-size: 46px;
+  margin: 16px 0;
+  animation: float 3s ease-in-out infinite;
 }
 
-.link-box {
-  word-break: break-all;
-  background: rgba(0,0,0,0.2);
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 13px;
-  color: white;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
-.share-buttons {
+.heart { 
+  color: var(--primary-pink); 
+  animation: heartbeat 1.5s infinite; 
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Progress Dots */
+.progress-dots {
   display: flex;
-  gap: 10px;
   justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
 }
 
-.share-btn {
-  padding: 10px 20px;
-  font-size: 14px;
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: 0.3s;
 }
 
-.whatsapp-btn { background: #25D366; color: white; }
-.copy-btn { background: #555; color: white; }
+.dot.active {
+  background: white;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
 
-/* Typewriter cursor effect */
+/* Typewriter Effect */
 .typewriter {
+  display: inline-block;
   border-right: 2px solid rgba(255, 255, 255, 0.8);
   animation: blink 0.7s infinite;
 }
@@ -207,164 +502,610 @@ button:hover {
   50% { border-color: rgba(255, 255, 255, 0.8); }
 }
 
-/* Romantic text styles */
-.romantic-text {
-  color: #ffeb3b;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+/* Button Group for Yes/No */
+.btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+  position: relative;
 }
 
-.large-heart {
-  font-size: 40px;
-  margin: 15px 0;
-  animation: heartbeat 1.5s infinite;
+/* No Button Special */
+#noBtn {
+  position: relative;
+  transition: all 0.2s ease !important;
 }
 
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+/* Floating Animation for Important Buttons */
+.pulse-btn {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+  50% { transform: scale(1.03); box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+}
+
+/* Mobile Swipe Indicator */
+.swipe-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  gap: 8px;
+}
+
+.swipe-indicator i {
+  animation: swipe 1.5s infinite;
+}
+
+@keyframes swipe {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+/* Hide/Show Classes */
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+/* Success Animation */
+.success-animation {
+  animation: success 0.5s ease;
+}
+
+@keyframes success {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 360px) {
+  .container {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  
+  h1 {
+    font-size: 1.4rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+  }
+  
+  .day-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .day-card {
+    padding: 12px 6px;
+  }
+  
+  .day-emoji {
+    font-size: 24px;
+  }
+  
+  .day-name {
+    font-size: 11px;
+  }
+  
+  .share-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet and Larger Screens */
+@media (min-width: 768px) {
+  .container {
+    max-width: 500px;
+    padding: 30px 25px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .glass-btn {
+    max-width: 280px;
+  }
+}
+
+/* Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .day-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- Love Rain Container -->
+<!-- Glass Background Elements -->
+<div class="glass-bg" id="glassBg"></div>
+
+<!-- Love Rain Animation -->
 <div class="love-rain" id="loveRain"></div>
 
-<!-- Input Page -->
-<div class="container" id="inputPage">
-  <h1>💖 Create Valentine Wish 💖</h1>
+<!-- ====================== -->
+<!-- 1. CREATE WISH PAGE -->
+<!-- ====================== -->
+<div class="container show" id="createPage">
+  <h1><i class="fas fa-heart"></i> Create Valentine Wish <i class="fas fa-heart"></i></h1>
+  <p>Create a beautiful Valentine wish for your loved one and share it via link!</p>
   
   <div class="input-group">
-    <input type="text" id="creatorName" placeholder="Your Name (যিনি দিচ্ছেন)" required>
-    <input type="text" id="partnerName" placeholder="Their Name (যিনি পাবেন)" required>
+    <div class="input-wrapper">
+      <div class="input-icon"><i class="fas fa-user"></i></div>
+      <input type="text" id="creatorName" placeholder="Your Name (যিনি দিচ্ছেন)" required>
+    </div>
+    
+    <div class="input-wrapper">
+      <div class="input-icon"><i class="fas fa-heart"></i></div>
+      <input type="text" id="partnerName" placeholder="Your Partner's Name (যিনি পাবেন)" required>
+    </div>
   </div>
   
-  <button onclick="createWish()">
-    Create Beautiful Wish ❤️
+  <h2><i class="fas fa-calendar-alt"></i> Choose a Valentine's Day:</h2>
+  
+  <div class="day-grid">
+    <div class="day-card" data-day="rose">
+      <div class="day-emoji">🌹</div>
+      <div class="day-name">Rose Day</div>
+      <div class="day-date">7 Feb</div>
+    </div>
+    <div class="day-card" data-day="propose">
+      <div class="day-emoji">💍</div>
+      <div class="day-name">Propose Day</div>
+      <div class="day-date">8 Feb</div>
+    </div>
+    <div class="day-card" data-day="chocolate">
+      <div class="day-emoji">🍫</div>
+      <div class="day-name">Chocolate Day</div>
+      <div class="day-date">9 Feb</div>
+    </div>
+    <div class="day-card" data-day="teddy">
+      <div class="day-emoji">🧸</div>
+      <div class="day-name">Teddy Day</div>
+      <div class="day-date">10 Feb</div>
+    </div>
+    <div class="day-card" data-day="promise">
+      <div class="day-emoji">🤝</div>
+      <div class="day-name">Promise Day</div>
+      <div class="day-date">11 Feb</div>
+    </div>
+    <div class="day-card" data-day="hug">
+      <div class="day-emoji">🤗</div>
+      <div class="day-name">Hug Day</div>
+      <div class="day-date">12 Feb</div>
+    </div>
+    <div class="day-card" data-day="kiss">
+      <div class="day-emoji">💋</div>
+      <div class="day-name">Kiss Day</div>
+      <div class="day-date">13 Feb</div>
+    </div>
+    <div class="day-card" data-day="valentine">
+      <div class="day-emoji">❤️</div>
+      <div class="day-name">Valentine's Day</div>
+      <div class="day-date">14 Feb</div>
+    </div>
+  </div>
+  
+  <button class="glass-btn btn-primary pulse-btn" onclick="createWish()">
+    <i class="fas fa-gift"></i> Create Valentine Wish
   </button>
   
-  <div class="share-section" id="shareSection">
-    <p style="font-size: 14px;">Share this special wish:</p>
+  <div class="swipe-indicator hidden" id="swipeIndicator">
+    <i class="fas fa-arrow-right"></i> Swipe for more days
+  </div>
+</div>
+
+<!-- ====================== -->
+<!-- 2. SHARE LINK PAGE -->
+<!-- ====================== -->
+<div class="container share-page hidden" id="sharePage">
+  <h1 class="success-animation"><i class="fas fa-share-alt"></i> Wish Created Successfully! <i class="fas fa-heart"></i></h1>
+  
+  <div class="share-icon"><i class="fas fa-link"></i></div>
+  
+  <p>Your Valentine wish has been created! Share the link below with your loved one:</p>
+  
+  <div class="steps-container">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">Copy the unique link below</div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">Share via WhatsApp, Messenger, or any app</div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">Your partner will see the beautiful wish when they open the link</div>
+    </div>
+  </div>
+  
+  <div class="share-section">
+    <p><strong><i class="fas fa-link"></i> Your Shareable Link:</strong></p>
     <div class="link-box" id="linkBox"></div>
     
     <div class="share-buttons">
-      <button class="share-btn copy-btn" onclick="copyLink()">
-        📋 Copy Link
+      <button class="share-btn glass-btn btn-secondary" onclick="copyLink()">
+        <i class="far fa-copy"></i> Copy Link
       </button>
-      <button class="share-btn whatsapp-btn" onclick="shareWhatsApp()">
-        📱 WhatsApp
+      <button class="share-btn glass-btn btn-success" onclick="shareWhatsApp()">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+      <button class="share-btn glass-btn btn-warning" onclick="previewWish()">
+        <i class="far fa-eye"></i> Preview Wish
       </button>
     </div>
   </div>
-</div>
-
-<!-- Wish Pages -->
-<div class="container page" id="page1" style="display: none;">
-  <h1 id="page1Title"></h1>
-  <p id="page1Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Open My Heart ❤️
+  
+  <div class="message-box">
+    <p><strong><i class="fas fa-exclamation-circle"></i> Important:</strong> Only the person who receives this link will be able to view this specific Valentine's Day wish. You can create multiple wishes for different days.</p>
+  </div>
+  
+  <button class="glass-btn" onclick="createNewWish()" style="margin-top: 10px;">
+    <i class="fas fa-plus-circle"></i> Create Another Wish
   </button>
 </div>
 
-<div class="container page" id="page2" style="display: none;">
-  <h1>Every Moment with You 💫</h1>
-  <p id="page2Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Next Page 💝
-  </button>
-</div>
-
-<div class="container page" id="page3" style="display: none;">
-  <h1>My Promise to You 🤝</h1>
-  <p id="page3Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Continue 🌹
-  </button>
-</div>
-
-<div class="container page" id="page4" style="display: none;">
-  <h1>A Special Question... 💍</h1>
-  <p>Will you be my Valentine forever?</p>
+<!-- ====================== -->
+<!-- 3. VALENTINE CARD PAGE -->
+<!-- ====================== -->
+<div class="container page hidden" id="valentinePage">
+  <h1 id="valentineTitle"></h1>
+  <div id="valentineSymbol" class="day-symbol"></div>
+  <p id="valentineMessage" class="typewriter"></p>
+  
+  <div id="valentineContent"></div>
+  
   <div class="btn-group">
-    <button onclick="beMyValentine()" style="background: #ff4d6d; color: white;">
-      Yes! Forever ❤️
+    <button class="glass-btn btn-primary" id="yesBtn" onclick="happyResponse()">
+      <i class="fas fa-check-circle"></i> Yes, I Accept!
     </button>
-    <button id="noBtn" onmouseover="moveNoButton()">
-      No
+    <button class="glass-btn" id="noBtn" onmouseover="moveNoButton()" onclick="funnyResponse()">
+      <i class="fas fa-question-circle"></i> Maybe Later?
     </button>
   </div>
+  
+  <div class="progress-dots" id="progressDots"></div>
+  
+  <button class="glass-btn btn-primary hidden" onclick="nextPage()" id="nextBtn" style="margin-top: 20px;">
+    <i class="fas fa-arrow-right"></i> Continue Reading
+  </button>
 </div>
 
-<div class="container page" id="page5" style="display: none;">
-  <h1>❤️ You Said Yes! ❤️</h1>
-  <div class="large-heart">💖</div>
+<!-- ====================== -->
+<!-- 4. FINAL PAGE -->
+<!-- ====================== -->
+<div class="container page hidden" id="finalPage">
+  <h1 id="finalTitle"></h1>
+  <div class="day-symbol heart"><i class="fas fa-heart"></i></div>
   <p id="finalMessage" class="typewriter"></p>
-  <p id="signature" style="font-weight: bold; margin-top: 20px;"></p>
-  <button onclick="shareAgain()" style="margin-top: 20px;">
-    Share This Happiness 💌
+  <p id="signature" style="font-weight: bold; margin-top: 20px; font-size: 1.1rem;"></p>
+  
+  <button class="glass-btn btn-primary pulse-btn" onclick="shareWishAgain()" style="margin-top: 20px;">
+    <i class="fas fa-share-alt"></i> Share This Wish
+  </button>
+  
+  <button class="glass-btn" onclick="createNewWish()" style="margin-top: 10px;">
+    <i class="fas fa-heart-circle-plus"></i> Create Your Own Wish
   </button>
 </div>
 
 <script>
+// Global variables
+let currentDay = '';
 let currentPage = 0;
-const totalPages = 5;
-let creatorName = "";
-let partnerName = "";
-let isWishActive = false;
+let totalPages = 4;
+let creatorName = '';
+let partnerName = '';
+let generatedLink = '';
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-// Start love rain immediately
-startLoveRain();
+// Day configurations
+const dayConfigs = {
+  rose: {
+    title: "🌹 Rose Day Special 🌹",
+    symbol: "🌹",
+    color: "#ff4081",
+    messages: [
+      `Dear {partnerName}, these roses are for you... Each rose represents my love for you!`,
+      `Just like every rose has its thorn, my life has its challenges. But you are the beautiful flower that makes it all worthwhile.`,
+      `Sending you virtual roses that will never wither! Each petal carries my love for you.`,
+      `Will you accept my roses and be my Valentine this Rose Day?`
+    ],
+    funResponse: "Ouch! The thorns! 😂",
+    yesResponse: "Yay! Roses accepted! 🌹💖"
+  },
+  propose: {
+    title: "💍 Propose Day Magic 💍",
+    symbol: "💍",
+    color: "#e91e63",
+    messages: [
+      `Dear {partnerName}, my heart beats only for you. Will you make me the happiest person?`,
+      `I don't need a perfect moment, I just need you. Will you be my forever?`,
+      `They say love makes the world go round. My world started spinning the day I met you!`,
+      `So... what do you say? Should we make this official? 💘`
+    ],
+    funResponse: "Let me check my schedule! 📅😂",
+    yesResponse: "YES! A thousand times YES! 💍🎉"
+  },
+  chocolate: {
+    title: "🍫 Chocolate Day Delight 🍫",
+    symbol: "🍫",
+    color: "#8d6e63",
+    messages: [
+      `Life is like a box of chocolates, {partnerName}. And you're the sweetest one!`,
+      `Warning: This chocolate may cause side effects like smiling uncontrollably and falling in love!`,
+      `You're sweeter than the sweetest chocolate and more addictive than sugar!`,
+      `Will you share this virtual chocolate with me and be my sweet Valentine?`
+    ],
+    funResponse: "I'm on a diet! 🥺😂",
+    yesResponse: "Chocolate shared is love doubled! 🍫💕"
+  },
+  teddy: {
+    title: "🧸 Teddy Day Cuddles 🧸",
+    symbol: "🧸",
+    color: "#a1887f",
+    messages: [
+      `This teddy may be virtual, but my love for you is real, {partnerName}!`,
+      `Whenever you miss me, hug this virtual teddy and feel my arms around you!`,
+      `Soft, cuddly, and always there for you - just like I want to be!`,
+      `Will you cuddle with this teddy and promise to be mine?`
+    ],
+    funResponse: "Teddy needs batteries! 🔋😂",
+    yesResponse: "Teddy cuddle accepted! 🧸🤗"
+  },
+  promise: {
+    title: "🤝 Promise Day Commitment 🤝",
+    symbol: "🤝",
+    color: "#4caf50",
+    messages: [
+      `I promise to make you smile every day, {partnerName}. Starting today!`,
+      `Cross my heart, I'll always be there for you through thick and thin.`,
+      `My promises aren't just words - they're commitments written on my heart.`,
+      `Do you promise to keep making me this happy forever?`
+    ],
+    funResponse: "Let me think about it... forever! 🤔😂",
+    yesResponse: "Promise sealed with a virtual kiss! 💋💚"
+  },
+  hug: {
+    title: "🤗 Hug Day Warmth 🤗",
+    symbol: "🤗",
+    color: "#ff9800",
+    messages: [
+      `Sending you the warmest virtual hug that lasts 30 seconds! Count with me, {partnerName}!`,
+      `Hugs are the universal medicine. Here's your daily dose from me!`,
+      `If hugs were calories, I'd be sending you enough for a lifetime!`,
+      `Can I hug you through the screen? Come closer!`
+    ],
+    funResponse: "Hug too tight! Can't breathe! 😂",
+    yesResponse: "Best hug ever received! 🤗💛"
+  },
+  kiss: {
+    title: "💋 Kiss Day Romance 💋",
+    symbol: "💋",
+    color: "#f44336",
+    messages: [
+      `Sending you virtual kisses that travel at the speed of light! Mwah! 💋`,
+      `Warning: These kisses may cause butterflies, heart flutters, and permanent smiles!`,
+      `They say a kiss is a lovely trick to stop speech when words become superfluous...`,
+      `Pucker up, {partnerName}! Virtual kisses incoming!`
+    ],
+    funResponse: "My screen is getting foggy! 😂",
+    yesResponse: "Kisses successfully delivered! 💋❤️"
+  },
+  valentine: {
+    title: "❤️ Valentine's Day Forever ❤️",
+    symbol: "❤️",
+    color: "#d81b60",
+    messages: [
+      `Happy Valentine's Day, {partnerName}! You're my today and all my tomorrows.`,
+      `Roses are red, violets are blue, sugar is sweet, and so are you!`,
+      `You don't need a special day to show you care, but it's nice to have one just for us!`,
+      `Will you be my Valentine today, tomorrow, and every day after?`
+    ],
+    funResponse: "Let me ask my cat! 🐱😂",
+    yesResponse: "Happiest Valentine's Day ever! ❤️🎉"
+  }
+};
 
-// Start heart pops occasionally
-setInterval(createHeartPop, 2000);
+// Initialize the page
+function initPage() {
+  startLoveRain();
+  createGlassBackground();
+  setupDayCards();
+  setupMobileEvents();
+  
+  // Check URL parameters on load
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  // Check if this is a view request (from a shared link)
+  if (urlParams.get('type') === 'view' && urlParams.get('creator') && urlParams.get('partner') && urlParams.get('day')) {
+    // This is a shared link - show the valentine card directly
+    creatorName = decodeURIComponent(urlParams.get('creator'));
+    partnerName = decodeURIComponent(urlParams.get('partner'));
+    currentDay = urlParams.get('day');
+    
+    // Start the valentine card
+    showValentineCard();
+  } else {
+    // Show create page
+    showPage('createPage');
+    
+    // Show swipe indicator on mobile
+    if (isMobile) {
+      setTimeout(() => {
+        document.getElementById('swipeIndicator').classList.remove('hidden');
+      }, 2000);
+    }
+  }
+  
+  // Start random heart pops
+  setInterval(createHeartPop, 1500);
+}
+
+function createGlassBackground() {
+  const glassBg = document.getElementById('glassBg');
+  const sizes = [80, 100, 60, 120, 70, 90];
+  
+  sizes.forEach((size, index) => {
+    const circle = document.createElement('div');
+    circle.className = 'glass-circle';
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
+    circle.style.top = `${10 + Math.random() * 80}%`;
+    circle.style.left = `${5 + Math.random() * 90}%`;
+    circle.style.opacity = 0.1 + Math.random() * 0.1;
+    
+    glassBg.appendChild(circle);
+  });
+}
+
+function setupMobileEvents() {
+  if (!isMobile) return;
+  
+  // Add touch events for better mobile interaction
+  document.querySelectorAll('.glass-btn').forEach(btn => {
+    btn.addEventListener('touchstart', function() {
+      this.style.transform = 'translateY(2px)';
+      this.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
+    });
+    
+    btn.addEventListener('touchend', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '';
+    });
+  });
+  
+  // Add swipe functionality for day cards on mobile
+  let startX = 0;
+  const dayGrid = document.querySelector('.day-grid');
+  
+  if (dayGrid) {
+    dayGrid.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    
+    dayGrid.addEventListener('touchmove', (e) => {
+      if (!startX) return;
+      
+      const currentX = e.touches[0].clientX;
+      const diffX = startX - currentX;
+      
+      if (Math.abs(diffX) > 50) {
+        // Hide swipe indicator after first swipe
+        document.getElementById('swipeIndicator').classList.add('hidden');
+      }
+    });
+  }
+}
 
 function startLoveRain() {
   const rainContainer = document.getElementById('loveRain');
-  const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+  const symbols = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝', '🌹', '🍫', '🧸', '💋'];
   
   // Create initial hearts
-  for(let i = 0; i < 30; i++) {
+  for(let i = 0; i < 25; i++) {
     createRainHeart();
   }
   
   // Add new hearts regularly
-  setInterval(createRainHeart, 300);
+  setInterval(createRainHeart, 350);
   
   function createRainHeart() {
     const heart = document.createElement('div');
     heart.className = 'love-drop';
-    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
     heart.style.left = Math.random() * 100 + 'vw';
     heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
-    heart.style.opacity = 0.3 + Math.random() * 0.7;
+    heart.style.fontSize = (16 + Math.random() * 18) + 'px';
+    heart.style.opacity = 0.3 + Math.random() * 0.5;
     
     rainContainer.appendChild(heart);
     
     // Remove after animation
     setTimeout(() => {
-      heart.remove();
+      if (heart.parentNode) {
+        heart.remove();
+      }
     }, 7000);
   }
 }
 
 function createHeartPop() {
-  if (!isWishActive) return;
-  
   const heart = document.createElement('div');
   heart.className = 'heart-pop';
   heart.innerHTML = '💖';
   heart.style.left = Math.random() * 100 + 'vw';
   heart.style.top = Math.random() * 100 + 'vh';
-  heart.style.color = ['#ff4d6d', '#ff8fab', '#ffffff'][Math.floor(Math.random() * 3)];
+  const colors = ['#ff4d6d', '#ff8fab', '#ffffff', '#ffeb3b'];
+  heart.style.color = colors[Math.floor(Math.random() * colors.length)];
   
   document.body.appendChild(heart);
   
   setTimeout(() => {
-    heart.remove();
+    if (heart.parentNode) {
+      heart.remove();
+    }
   }, 1000);
+}
+
+// Day selection setup
+function setupDayCards() {
+  document.querySelectorAll('.day-card').forEach(card => {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+      currentDay = this.dataset.day;
+      
+      // Hide swipe indicator when a day is selected
+      document.getElementById('swipeIndicator').classList.add('hidden');
+      
+      // Update create button text
+      const createBtn = document.querySelector('#createPage .glass-btn');
+      const dayName = this.querySelector('.day-name').textContent;
+      createBtn.innerHTML = `<i class="fas fa-gift"></i> Create ${dayName} Wish`;
+    });
+    
+    // Add touch feedback for mobile
+    card.addEventListener('touchstart', function() {
+      this.style.transform = 'scale(0.95)';
+    });
+    
+    card.addEventListener('touchend', function() {
+      this.style.transform = '';
+    });
+  });
+}
+
+function showPage(pageId) {
+  // Hide all pages
+  document.querySelectorAll('.container').forEach(page => {
+    page.classList.remove('show');
+    page.classList.add('hidden');
+  });
+  
+  // Show the requested page
+  document.getElementById(pageId).classList.remove('hidden');
+  document.getElementById(pageId).classList.add('show');
 }
 
 function createWish() {
@@ -372,100 +1113,344 @@ function createWish() {
   partnerName = document.getElementById('partnerName').value.trim();
   
   if (!creatorName || !partnerName) {
-    alert('Please enter both names!');
+    showAlert('Please enter both names!', 'warning');
     return;
   }
   
-  // Generate sharing link
+  if (!currentDay) {
+    showAlert('Please select a Valentine\'s Day to celebrate!', 'warning');
+    return;
+  }
+  
+  // Generate unique ID for this wish
+  const wishId = generateWishId();
+  
+  // Generate sharing link with all parameters
   const baseUrl = window.location.origin + window.location.pathname;
-  const url = `${baseUrl}?creator=${encodeURIComponent(creatorName)}&partner=${encodeURIComponent(partnerName)}`;
+  generatedLink = `${baseUrl}?id=${wishId}&creator=${encodeURIComponent(creatorName)}&partner=${encodeURIComponent(partnerName)}&day=${currentDay}&type=view`;
   
-  // Show share section
-  document.getElementById('shareSection').style.display = 'block';
-  document.getElementById('linkBox').innerText = url;
+  // Save wish data to localStorage (for preview only)
+  const wishData = {
+    id: wishId,
+    creator: creatorName,
+    partner: partnerName,
+    day: currentDay,
+    timestamp: Date.now()
+  };
   
-  // Save for sharing
-  window.currentGeneratedUrl = url;
-  window.waLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Hello ${partnerName}! ❤️ I have a special Valentine's wish for you. Click here: ${url}`)}`;
+  localStorage.setItem(`valentine_wish_${wishId}`, JSON.stringify(wishData));
   
-  // Auto start wish if names are provided in URL
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('creator') && urlParams.get('partner')) {
-    startWish();
+  // Display the link in share page
+  document.getElementById('linkBox').textContent = generatedLink;
+  
+  // Set up WhatsApp share link
+  const dayName = document.querySelector('.day-card.active .day-name').textContent;
+  window.waLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Hello ${partnerName}! ❤️ I have created a special ${dayName} wish for you. Click here to view: ${generatedLink}`)}`;
+  
+  // Show share page
+  showPage('sharePage');
+  
+  // Create confetti celebration
+  createConfetti(15);
+  showAlert('Wish created successfully!', 'success');
+}
+
+function generateWishId() {
+  return 'wish_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function showAlert(message, type) {
+  // Remove existing alerts
+  const existingAlert = document.querySelector('.custom-alert');
+  if (existingAlert) {
+    existingAlert.remove();
+  }
+  
+  const alert = document.createElement('div');
+  alert.className = `custom-alert ${type}`;
+  
+  const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle';
+  const bgColor = type === 'success' ? 'rgba(76, 175, 80, 0.95)' : 'rgba(255, 152, 0, 0.95)';
+  
+  alert.style.cssText = `
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: ${bgColor};
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    z-index: 10000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    max-width: 85%;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  `;
+  
+  alert.innerHTML = `
+    <i class="fas ${icon}" style="font-size: 18px;"></i>
+    <span>${message}</span>
+  `;
+  
+  document.body.appendChild(alert);
+  
+  setTimeout(() => {
+    if (alert.parentNode) {
+      alert.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => {
+        if (alert.parentNode) alert.remove();
+      }, 300);
+    }
+  }, 3000);
+  
+  // Add animation keyframes
+  if (!document.querySelector('#alert-animations')) {
+    const style = document.createElement('style');
+    style.id = 'alert-animations';
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+        to { transform: translateX(-50%) translateY(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+        from { transform: translateX(-50%) translateY(0); opacity: 1; }
+        to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   }
 }
 
 function copyLink() {
-  navigator.clipboard.writeText(window.currentGeneratedUrl);
-  alert('Link copied! Send it to your loved one. ❤️');
+  navigator.clipboard.writeText(generatedLink).then(() => {
+    // Show temporary message
+    const copyBtn = document.querySelector('.copy-btn');
+    const originalHTML = copyBtn.innerHTML;
+    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    copyBtn.style.background = 'linear-gradient(135deg, rgba(76, 175, 80, 0.95), rgba(76, 175, 80, 0.8))';
+    
+    setTimeout(() => {
+      copyBtn.innerHTML = originalHTML;
+      copyBtn.style.background = '';
+    }, 2000);
+    
+    // Add celebration effect
+    createConfetti(8);
+    showAlert('Link copied to clipboard!', 'success');
+  });
 }
 
 function shareWhatsApp() {
-  window.open(window.waLink, '_blank');
+  if (isMobile) {
+    // For mobile, open WhatsApp directly
+    window.location.href = window.waLink;
+  } else {
+    // For desktop, open in new tab
+    window.open(window.waLink, '_blank');
+  }
+  
+  // Add celebration effect
+  createConfetti(12);
 }
 
-function startWish() {
-  const urlParams = new URLSearchParams(window.location.search);
-  creatorName = urlParams.get('creator') || creatorName;
-  partnerName = urlParams.get('partner') || partnerName;
+function previewWish() {
+  // Show a preview message
+  showAlert("Preview mode! Share the link with your partner for the full experience. ❤️", 'warning');
   
-  if (!creatorName || !partnerName) return;
-  
-  isWishActive = true;
-  document.getElementById('inputPage').style.display = 'none';
-  document.getElementById('page1').style.display = 'block';
-  currentPage = 1;
-  
-  // Start typewriter effects
-  typeWriter('page1Title', `For My Dear ${partnerName}... ❤️`, 50);
-  typeWriter('page1Text', `Today, on this special day, I want to tell you something from the bottom of my heart...`, 40);
+  // Show the valentine card
+  showValentineCard();
 }
 
-function typeWriter(elementId, text, speed = 40) {
-  const element = document.getElementById(elementId);
-  element.classList.remove('typewriter');
-  element.innerHTML = '';
+function createNewWish() {
+  // Reset form
+  document.getElementById('creatorName').value = '';
+  document.getElementById('partnerName').value = '';
+  document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+  currentDay = '';
   
+  // Show create page
+  showPage('createPage');
+  
+  // Reset create button text
+  const createBtn = document.querySelector('#createPage .glass-btn');
+  createBtn.innerHTML = '<i class="fas fa-gift"></i> Create Valentine Wish';
+  
+  // Show swipe indicator again on mobile
+  if (isMobile) {
+    setTimeout(() => {
+      document.getElementById('swipeIndicator').classList.remove('hidden');
+    }, 1000);
+  }
+}
+
+function showValentineCard() {
+  currentPage = 0;
+  
+  // Update page with day config
+  const config = dayConfigs[currentDay];
+  document.getElementById('valentineTitle').textContent = config.title;
+  document.getElementById('valentineSymbol').innerHTML = config.symbol;
+  document.getElementById('valentineSymbol').className = `day-symbol ${currentDay}`;
+  
+  // Set button colors
+  document.getElementById('yesBtn').style.background = `linear-gradient(135deg, ${config.color}, ${config.color}90)`;
+  
+  // Create progress dots
+  createProgressDots();
+  
+  // Start with first message
+  updateValentinePage();
+  
+  // Show valentine page
+  showPage('valentinePage');
+  
+  // Start celebration effects
+  createConfetti(20);
+}
+
+function createProgressDots() {
+  const dotsContainer = document.getElementById('progressDots');
+  dotsContainer.innerHTML = '';
+  
+  for(let i = 0; i < totalPages; i++) {
+    const dot = document.createElement('div');
+    dot.className = `dot ${i === currentPage ? 'active' : ''}`;
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function updateValentinePage() {
+  const config = dayConfigs[currentDay];
+  
+  // Update message
+  const messageElement = document.getElementById('valentineMessage');
+  messageElement.classList.remove('typewriter');
+  messageElement.innerHTML = '';
+  
+  let message = config.messages[currentPage];
+  // Replace partner name placeholder
+  message = message.replace(/{partnerName}/g, partnerName);
+  
+  // Typewriter effect
   let i = 0;
   function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
+    if (i < message.length) {
+      messageElement.innerHTML += message.charAt(i);
       i++;
-      setTimeout(type, speed);
+      setTimeout(type, 35);
     } else {
-      element.classList.add('typewriter');
+      messageElement.classList.add('typewriter');
     }
   }
   type();
+  
+  // Update progress dots
+  document.querySelectorAll('.dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentPage);
+  });
+  
+  // Update valentine content
+  const contentElement = document.getElementById('valentineContent');
+  contentElement.innerHTML = '';
+  
+  // Add fun content based on day and page
+  if (currentPage === 2) {
+    const funContent = document.createElement('div');
+    funContent.style.margin = '15px 0';
+    
+    if (currentDay === 'rose') {
+      funContent.innerHTML = `
+        <div style="display: flex; justify-content: center; gap: 8px; margin: 15px 0; flex-wrap: wrap;">
+          <span style="font-size: 28px;">🌹</span>
+          <span style="font-size: 28px;">🌺</span>
+          <span style="font-size: 28px;">🌸</span>
+          <span style="font-size: 28px;">💐</span>
+        </div>
+        <p style="font-size: 13px; opacity: 0.8;">Virtual flowers for you, ${partnerName}!</p>
+      `;
+    } else if (currentDay === 'chocolate') {
+      funContent.innerHTML = `
+        <div style="display: flex; justify-content: center; gap: 8px; margin: 15px 0; flex-wrap: wrap;">
+          <span style="font-size: 28px;">🍫</span>
+          <span style="font-size: 28px;">🍬</span>
+          <span style="font-size: 28px;">🍭</span>
+          <span style="font-size: 28px;">🍩</span>
+        </div>
+        <p style="font-size: 13px; opacity: 0.8;">Virtual sweets just for you, ${partnerName}!</p>
+      `;
+    } else if (currentDay === 'hug') {
+      funContent.innerHTML = `
+        <div style="display: flex; justify-content: center; margin: 15px 0;">
+          <div style="font-size: 36px; animation: float 2s ease-in-out infinite;">🤗</div>
+        </div>
+        <p style="font-size: 13px; opacity: 0.8;">Sending you the warmest hug, ${partnerName}!</p>
+      `;
+    } else if (currentDay === 'kiss') {
+      funContent.innerHTML = `
+        <div style="display: flex; justify-content: center; margin: 15px 0;">
+          <div style="font-size: 36px; animation: heartbeat 1s infinite;">💋</div>
+        </div>
+        <p style="font-size: 13px; opacity: 0.8;">Virtual kisses for you, ${partnerName}!</p>
+      `;
+    }
+    
+    contentElement.appendChild(funContent);
+  }
+  
+  // Show/hide next button
+  document.getElementById('nextBtn').classList.toggle('hidden', currentPage >= totalPages - 1);
 }
 
 function nextPage() {
-  document.getElementById(`page${currentPage}`).style.display = 'none';
-  currentPage++;
-  
-  if (currentPage > totalPages) {
-    currentPage = 1;
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+    updateValentinePage();
+    
+    // Fun effect on page change
+    createConfetti(8);
+  } else {
+    // Last page - show final page
+    showFinalPage();
   }
+}
+
+function showFinalPage() {
+  const config = dayConfigs[currentDay];
+  document.getElementById('finalTitle').textContent = `You Made My Day! 💖`;
   
-  const pageElement = document.getElementById(`page${currentPage}`);
-  pageElement.style.display = 'block';
+  const finalMessage = `Thank you for making this ${config.title.split(' ')[0]} special! You mean the world to me, ${partnerName}. This is just the beginning of our beautiful journey together!`;
   
-  // Add content based on page
-  switch(currentPage) {
-    case 2:
-      typeWriter('page2Text', `Every single moment with you feels magical, ${partnerName}. Your smile lights up my world and your presence makes everything better. I cherish every memory we've created together.`, 30);
-      break;
-    case 3:
-      typeWriter('page3Text', `I promise to always stand by your side, to support your dreams, to make you laugh, and to love you more with each passing day. You are my everything, ${partnerName}.`, 30);
-      break;
-    case 4:
-      // Question page - no typewriter needed
-      break;
-    case 5:
-      typeWriter('finalMessage', `You've made me the happiest person in the world! This Valentine's Day, I want you to know that my love for you grows stronger every single day. Thank you for being my everything. ❤️`, 30);
-      document.getElementById('signature').innerText = `With all my love,\n${creatorName}`;
-      break;
+  // Typewriter effect for final message
+  const finalElement = document.getElementById('finalMessage');
+  finalElement.classList.remove('typewriter');
+  finalElement.innerHTML = '';
+  
+  let i = 0;
+  function type() {
+    if (i < finalMessage.length) {
+      finalElement.innerHTML += finalMessage.charAt(i);
+      i++;
+      setTimeout(type, 25);
+    } else {
+      finalElement.classList.add('typewriter');
+    }
   }
+  type();
+  
+  document.getElementById('signature').innerHTML = `With all my love,<br><strong>${creatorName}</strong>`;
+  
+  // Show final page
+  showPage('finalPage');
+  
+  // Big confetti celebration
+  createConfettiExplosion();
 }
 
 function moveNoButton() {
@@ -473,8 +1458,8 @@ function moveNoButton() {
   const container = document.querySelector('.container');
   const containerRect = container.getBoundingClientRect();
   
-  const maxX = containerRect.width - 100;
-  const maxY = containerRect.height - 50;
+  const maxX = containerRect.width - btn.offsetWidth - 20;
+  const maxY = containerRect.height - btn.offsetHeight - 20;
   
   const randomX = Math.random() * maxX;
   const randomY = Math.random() * maxY;
@@ -483,32 +1468,60 @@ function moveNoButton() {
   btn.style.left = `${randomX}px`;
   btn.style.top = `${randomY}px`;
   
-  // Add funny messages
-  const messages = ["Are you sure?", "Think again!", "Really?", "Try again!", "Click Yes!"];
-  btn.innerText = messages[Math.floor(Math.random() * messages.length)];
+  // Add funny messages based on day
+  const config = dayConfigs[currentDay];
+  const messages = [
+    config.funResponse,
+    "Are you sure?",
+    "Think again!",
+    "Really?",
+    "Try again!",
+    "Click Yes!",
+    "I'm slippery!",
+    "Catch me if you can!"
+  ];
+  btn.innerHTML = `<i class="fas fa-question-circle"></i> ${messages[Math.floor(Math.random() * messages.length)]}`;
+  
+  // Fun effect
+  createConfetti(5);
 }
 
-function beMyValentine() {
-  // Create confetti explosion
+function funnyResponse() {
+  const config = dayConfigs[currentDay];
+  showAlert(`😂 ${config.funResponse} Just kidding! I know you meant YES! ❤️`, 'warning');
+  
+  // Move button again for more fun
+  setTimeout(() => {
+    moveNoButton();
+  }, 300);
+  
+  // Create more confetti
+  createConfetti(12);
+}
+
+function happyResponse() {
+  const config = dayConfigs[currentDay];
+  showAlert(`🎉 ${config.yesResponse} You've made me the happiest person! 💖`, 'success');
+  
+  // Celebration effect
   createConfettiExplosion();
   
-  // Increase love rain
-  for(let i = 0; i < 50; i++) {
+  // If not on last page, go to next
+  if (currentPage < totalPages - 1) {
     setTimeout(() => {
-      createSpecialHeart();
-    }, i * 50);
+      nextPage();
+    }, 1200);
+  } else {
+    setTimeout(() => {
+      showFinalPage();
+    }, 1200);
   }
-  
-  // Go to final page
-  setTimeout(() => {
-    nextPage();
-  }, 1500);
 }
 
-function createConfettiExplosion() {
-  const colors = ['#ff4d6d', '#ff8fab', '#ffffff', '#ffeb3b', '#c9ffbf'];
+function createConfetti(count) {
+  const colors = ['#ff4d6d', '#ff8fab', '#ffffff', '#ffeb3b', '#c9ffbf', dayConfigs[currentDay]?.color || '#d81b60'];
   
-  for(let i = 0; i < 100; i++) {
+  for(let i = 0; i < count; i++) {
     setTimeout(() => {
       const confetti = document.createElement('div');
       confetti.className = 'confetti';
@@ -516,68 +1529,55 @@ function createConfettiExplosion() {
       confetti.style.top = '50%';
       confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       
-      confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
+      confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 180}px`);
       confetti.style.setProperty('--deg', `${Math.random() * 720}deg`);
       
       document.body.appendChild(confetti);
       
       setTimeout(() => {
-        confetti.remove();
+        if (confetti.parentNode) confetti.remove();
       }, 2000);
-    }, i * 10);
+    }, i * 40);
   }
 }
 
-function createSpecialHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'love-drop';
-  heart.innerHTML = '💖';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = '2s';
-  heart.style.fontSize = '30px';
-  heart.style.color = '#ffeb3b';
-  heart.style.textShadow = '0 0 20px #ffeb3b';
+function createConfettiExplosion() {
+  createConfetti(80);
   
-  document.getElementById('loveRain').appendChild(heart);
-  
-  setTimeout(() => {
-    heart.remove();
-  }, 2000);
-}
-
-function shareAgain() {
-  document.getElementById('page5').style.display = 'none';
-  document.getElementById('inputPage').style.display = 'block';
-  document.getElementById('shareSection').style.display = 'block';
-  
-  // Highlight the link
-  const linkBox = document.getElementById('linkBox');
-  linkBox.style.animation = 'none';
-  setTimeout(() => {
-    linkBox.style.animation = 'pulse 1s 3';
-  }, 10);
-}
-
-// Check URL parameters on load
-window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('creator') && urlParams.get('partner')) {
-    creatorName = urlParams.get('creator');
-    partnerName = urlParams.get('partner');
-    startWish();
-  }
-  
-  // Add pulse animation for link box
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+  // Special effect based on day
+  const config = dayConfigs[currentDay];
+  if (config) {
+    for(let i = 0; i < 25; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.className = 'love-drop';
+        heart.innerHTML = config.symbol;
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = '1.8s';
+        heart.style.fontSize = '26px';
+        heart.style.color = config.color;
+        heart.style.textShadow = `0 0 15px ${config.color}`;
+        
+        document.getElementById('loveRain').appendChild(heart);
+        
+        setTimeout(() => {
+          if (heart.parentNode) heart.remove();
+        }, 1800);
+      }, i * 40);
     }
-  `;
-  document.head.appendChild(style);
-};
+  }
+}
+
+function shareWishAgain() {
+  // Go back to share page with the same link
+  showPage('sharePage');
+  
+  // Update message
+  document.querySelector('#sharePage h1').innerHTML = '<i class="fas fa-share-alt"></i> Share This Wish Again! <i class="fas fa-heart"></i>';
+}
+
+// Initialize the page when loaded
+window.addEventListener('DOMContentLoaded', initPage);
 </script>
 </body>
 </html>
