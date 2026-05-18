@@ -1,583 +1,2474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<title>Valentine Surprise ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>WishVerse Pro — Create & Share Beautiful Greeting Cards</title>
+<meta name="description" content="Create stunning animated greeting cards for every occasion. Birthday, Eid, Love, Friendship & more. Share instantly on Facebook, WhatsApp & TikTok.">
+<meta property="og:title" content="WishVerse Pro — Premium Animated Greeting Cards">
+<meta property="og:description" content="Create & share beautiful animated greeting cards for every occasion.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a1a">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+/* ============================================================
+   WISHVERSE PRO — PREMIUM DESIGN SYSTEM
+   ============================================================ */
+
+:root {
+  /* Color Palette — Dark Mode (default) */
+  --bg-primary: #080816;
+  --bg-secondary: #0f0f2a;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-glass: rgba(255,255,255,0.06);
+  --bg-glass-hover: rgba(255,255,255,0.10);
+  --border-glass: rgba(255,255,255,0.10);
+  --border-glow: rgba(139,92,246,0.4);
+
+  --text-primary: #f0efff;
+  --text-secondary: #a09bc8;
+  --text-muted: #6b6890;
+
+  --accent-violet: #8b5cf6;
+  --accent-pink: #ec4899;
+  --accent-gold: #f59e0b;
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-rose: #f43f5e;
+
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --gradient-card: linear-gradient(145deg, rgba(139,92,246,0.15), rgba(236,72,153,0.08));
+  --gradient-btn: linear-gradient(135deg, #8b5cf6, #ec4899);
+  --gradient-gold: linear-gradient(135deg, #f59e0b, #ef4444);
+  --gradient-ocean: linear-gradient(135deg, #06b6d4, #3b82f6);
+  --gradient-nature: linear-gradient(135deg, #10b981, #06b6d4);
+
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-glow: 0 0 40px rgba(139,92,246,0.3);
+  --shadow-glow-pink: 0 0 40px rgba(236,72,153,0.3);
+  --shadow-btn: 0 8px 24px rgba(139,92,246,0.4);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-full: 9999px;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-handwrite: 'Kalam', cursive;
+
+  --transition-fast: 0.15s cubic-bezier(0.4,0,0.2,1);
+  --transition-smooth: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --transition-spring: 0.5s cubic-bezier(0.34,1.56,0.64,1);
 }
 
+[data-theme="light"] {
+  --bg-primary: #faf9ff;
+  --bg-secondary: #f1f0fb;
+  --bg-card: rgba(255,255,255,0.8);
+  --bg-glass: rgba(255,255,255,0.7);
+  --bg-glass-hover: rgba(255,255,255,0.9);
+  --border-glass: rgba(139,92,246,0.15);
+  --text-primary: #1a1830;
+  --text-secondary: #4a4570;
+  --text-muted: #8885aa;
+  --shadow-card: 0 8px 32px rgba(139,92,246,0.12), 0 0 0 1px rgba(139,92,246,0.08);
+}
+
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
-  height: 100vh;
-  background: linear-gradient(180deg, #ff4d6d, #ff758c);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.container {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  text-align: center;
-  color: white;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  z-index: 10;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-p {
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
-  margin-bottom: 20px;
-  min-height: 80px;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-.input-group {
-  margin-bottom: 20px;
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-violet); border-radius: 3px; }
+
+/* ============ ANIMATED BG ============ */
+.animated-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.3;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.orb-1 { width: 600px; height: 600px; background: var(--accent-violet); top: -200px; left: -200px; animation-delay: 0s; }
+.orb-2 { width: 500px; height: 500px; background: var(--accent-pink); bottom: -150px; right: -150px; animation-delay: -3s; }
+.orb-3 { width: 400px; height: 400px; background: var(--accent-cyan); top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: -6s; }
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-20px) scale(1.05); }
+  66% { transform: translate(-20px,30px) scale(0.95); }
 }
 
-input {
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  text-align: center;
-  transition: 0.3s;
+/* Star particles */
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star {
+  position: absolute; width: 2px; height: 2px; background: white;
+  border-radius: 50%; opacity: 0;
+  animation: twinkle var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.7; transform: scale(1.5); }
 }
 
-input:focus {
-  outline: none;
-  border-color: #ff4d6d;
-  box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+/* ============ LAYOUT ============ */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; position: relative; z-index: 1; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(8,8,22,0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-glass);
+  transition: var(--transition-smooth);
+}
+[data-theme="light"] .navbar { background: rgba(250,249,255,0.8); }
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 900;
+  background: var(--gradient-btn); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.logo-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--gradient-btn);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; animation: logoPulse 2s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(139,92,246,0); }
 }
 
-button {
-  padding: 15px 30px;
-  border: none;
-  border-radius: 50px;
-  background: white;
-  color: #ff4d6d;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
+  list-style: none;
+}
+.nav-links a {
+  padding: 8px 16px; border-radius: var(--radius-full);
+  font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+.nav-links a:hover { color: var(--text-primary); background: var(--bg-glass); }
+.nav-links a.active { color: var(--accent-violet); background: rgba(139,92,246,0.12); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.btn-theme {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition-fast);
+}
+.btn-theme:hover { background: var(--bg-glass-hover); transform: rotate(20deg); }
+
+.btn-login {
+  padding: 9px 22px; border-radius: var(--radius-full);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  font-size: 0.9rem; font-weight: 500; color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+.btn-login:hover { background: var(--bg-glass-hover); border-color: var(--accent-violet); }
+
+.btn-primary {
+  padding: 9px 22px; border-radius: var(--radius-full);
+  background: var(--gradient-btn);
+  font-size: 0.9rem; font-weight: 600; color: white;
+  box-shadow: var(--shadow-btn);
+  transition: var(--transition-spring);
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg,rgba(255,255,255,0.2),transparent);
+  opacity: 0; transition: var(--transition-fast);
+}
+.btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 12px 32px rgba(139,92,246,0.5); }
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  align-items: center; justify-content: center;
+}
+.hamburger span {
+  width: 18px; height: 2px; background: var(--text-primary);
+  border-radius: 2px; transition: var(--transition-smooth);
 }
 
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+/* ============ HERO SECTION ============ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 24px 80px;
+  position: relative; z-index: 1; overflow: hidden;
+}
+.hero-content { max-width: 680px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: var(--radius-full);
+  background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25);
+  font-size: 0.82rem; font-weight: 600; color: var(--accent-violet);
+  margin-bottom: 28px; letter-spacing: 0.05em; text-transform: uppercase;
+  animation: fadeSlideUp 0.6s ease both;
+}
+.badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-violet); animation: pulseDot 1.5s ease-in-out infinite; }
+@keyframes pulseDot { 0%, 100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(1.4); } }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900; line-height: 1.05;
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.6s 0.1s ease both;
+}
+.hero h1 .gradient-text {
+  background: var(--gradient-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display: block;
 }
 
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+.hero-desc {
+  font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 520px;
+  animation: fadeSlideUp 0.6s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeSlideUp 0.6s 0.3s ease both;
+}
+.btn-hero-primary {
+  padding: 16px 36px; border-radius: var(--radius-full);
+  background: var(--gradient-btn); color: white;
+  font-size: 1rem; font-weight: 700;
+  box-shadow: var(--shadow-btn);
+  transition: var(--transition-spring);
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-hero-primary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 16px 48px rgba(139,92,246,0.5); }
+
+.btn-hero-secondary {
+  padding: 16px 36px; border-radius: var(--radius-full);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  color: var(--text-primary); font-size: 1rem; font-weight: 600;
+  transition: var(--transition-spring);
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-hero-secondary:hover { background: var(--bg-glass-hover); transform: translateY(-3px); border-color: var(--accent-violet); }
+
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 56px;
+  animation: fadeSlideUp 0.6s 0.4s ease both;
+}
+.stat { text-align: left; }
+.stat-num {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 900;
+  background: var(--gradient-btn); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Hero Visual */
+.hero-visual {
+  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+  width: 640px; pointer-events: none;
+}
+.hero-card-stack { position: relative; width: 380px; height: 500px; margin: 0 auto; }
+.hero-card {
+  position: absolute; width: 300px; height: 420px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.hero-card:nth-child(1) { right: 60px; top: 40px; transform: rotate(8deg); animation: heroCard1 4s ease-in-out infinite; z-index: 1; }
+.hero-card:nth-child(2) { left: 0; top: 20px; transform: rotate(-5deg); animation: heroCard2 4s ease-in-out infinite; z-index: 2; }
+.hero-card:nth-child(3) { right: 20px; bottom: 0; transform: rotate(3deg); animation: heroCard3 4s ease-in-out infinite; z-index: 0; }
+
+@keyframes heroCard1 { 0%,100%{transform:rotate(8deg) translateY(0)} 50%{transform:rotate(10deg) translateY(-10px)} }
+@keyframes heroCard2 { 0%,100%{transform:rotate(-5deg) translateY(0)} 50%{transform:rotate(-7deg) translateY(-15px)} }
+@keyframes heroCard3 { 0%,100%{transform:rotate(3deg) translateY(0)} 50%{transform:rotate(1deg) translateY(-8px)} }
+
+.card-bg-birthday { background: linear-gradient(145deg, #ff6b6b, #feca57, #ff9ff3); }
+.card-bg-love { background: linear-gradient(145deg, #ff4757, #ff6b81, #ff1744); }
+.card-bg-eid { background: linear-gradient(145deg, #1e3c72, #2a5298, #00b09b); }
+
+.mini-card-content {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px; text-align: center; color: white;
+}
+.mini-card-emoji { font-size: 3.5rem; margin-bottom: 16px; animation: emojiFloat 3s ease-in-out infinite; }
+@keyframes emojiFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-8px) scale(1.1)} }
+.mini-card-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; }
+.mini-card-text { font-size: 0.8rem; opacity: 0.85; }
+
+/* Floating badges */
+.float-badge {
+  position: absolute; border-radius: var(--radius-full);
+  background: var(--bg-glass); backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  padding: 10px 16px; font-size: 0.82rem; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  animation: floatBadge 3s ease-in-out infinite;
+  box-shadow: var(--shadow-card); color: var(--text-primary);
+}
+.float-badge:nth-child(4) { top: 10px; right: -20px; animation-delay: 0s; }
+.float-badge:nth-child(5) { bottom: 60px; left: -40px; animation-delay: -1.5s; }
+@keyframes floatBadge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* ============ SECTION HEADERS ============ */
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-tag {
+  display: inline-block; padding: 6px 16px; border-radius: var(--radius-full);
+  background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);
+  font-size: 0.78rem; font-weight: 700; color: var(--accent-violet);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900;
+  line-height: 1.1; margin-bottom: 16px;
+}
+.section-subtitle { font-size: 1rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; }
+
+/* ============ CATEGORIES GRID ============ */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+.category-card {
+  position: relative; border-radius: var(--radius-md);
+  overflow: hidden; cursor: pointer;
+  aspect-ratio: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: var(--transition-spring);
+  background: var(--bg-card); border: 1px solid var(--border-glass);
+  group: true;
+}
+.category-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--cat-gradient, var(--gradient-btn));
+  opacity: 0; transition: var(--transition-smooth);
+}
+.category-card:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.category-card:hover::before { opacity: 1; }
+.category-card:hover .cat-icon { transform: scale(1.2) rotate(-5deg); }
+.category-card:hover .cat-label { color: white; }
+
+.cat-icon {
+  font-size: 2.5rem; margin-bottom: 12px;
+  transition: var(--transition-spring); position: relative; z-index: 1;
+}
+.cat-label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);
+  transition: var(--transition-fast); position: relative; z-index: 1;
+  text-align: center; padding: 0 8px;
+}
+.cat-count {
+  font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;
+  position: relative; z-index: 1; transition: var(--transition-fast);
+}
+.category-card:hover .cat-count { color: rgba(255,255,255,0.7); }
+
+/* ============ CARDS GRID ============ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.wish-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--bg-card); border: 1px solid var(--border-glass);
+  transition: var(--transition-spring); cursor: pointer;
   position: relative;
-  min-height: 60px;
+}
+.wish-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.4), var(--shadow-glow); border-color: var(--accent-violet); }
+.wish-card:hover .card-overlay { opacity: 1; }
+.wish-card:hover .card-actions { transform: translateY(0); opacity: 1; }
+
+.card-visual {
+  height: 220px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.card-visual-content {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px; text-align: center; color: white;
+  position: relative; z-index: 1;
+}
+.card-big-emoji { font-size: 4rem; animation: emojiFloat 3s ease-in-out infinite; }
+.card-title-inner { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-top: 12px; }
+
+.card-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.3);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: var(--transition-smooth); z-index: 2;
+}
+.card-actions {
+  display: flex; gap: 12px;
+  transform: translateY(20px); opacity: 0; transition: var(--transition-spring);
+}
+.card-action-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition-spring);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.card-action-btn:hover { transform: scale(1.15); background: white; }
+
+.card-info { padding: 18px 20px; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.card-category {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--accent-violet);
+  background: rgba(139,92,246,0.1); padding: 4px 10px; border-radius: var(--radius-full);
+}
+.card-views { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+.card-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+.card-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-glass); }
+.card-reactions { display: flex; gap: 8px; }
+.reaction-btn { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; transition: var(--transition-fast); padding: 4px 8px; border-radius: var(--radius-full); }
+.reaction-btn:hover { color: var(--accent-rose); background: rgba(244,63,94,0.08); transform: scale(1.1); }
+.card-share-btn {
+  font-size: 0.78rem; font-weight: 600; color: var(--accent-violet);
+  padding: 6px 14px; border-radius: var(--radius-full);
+  background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);
+  transition: var(--transition-fast); display: flex; align-items: center; gap: 6px;
+}
+.card-share-btn:hover { background: rgba(139,92,246,0.2); }
+
+/* ============ TRENDING SECTION ============ */
+.trending-scroll { overflow-x: auto; padding-bottom: 16px; scrollbar-width: none; }
+.trending-scroll::-webkit-scrollbar { display: none; }
+.trending-row { display: flex; gap: 20px; padding: 4px 0; width: max-content; }
+.trending-item {
+  width: 220px; flex-shrink: 0; border-radius: var(--radius-md);
+  overflow: hidden; background: var(--bg-card); border: 1px solid var(--border-glass);
+  transition: var(--transition-spring); cursor: pointer;
+}
+.trending-item:hover { transform: translateY(-6px) scale(1.02); border-color: var(--accent-violet); box-shadow: var(--shadow-glow); }
+.trending-visual { height: 160px; position: relative; }
+.trending-rank {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+  padding: 4px 10px; border-radius: var(--radius-full);
+  font-size: 0.72rem; font-weight: 800; color: var(--accent-gold);
+  display: flex; align-items: center; gap: 4px; z-index: 3;
+}
+.trending-info { padding: 14px 16px; }
+.trending-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.trending-stats { font-size: 0.75rem; color: var(--text-muted); display: flex; gap: 12px; }
+
+/* ============ FESTIVAL SECTION ============ */
+.festival-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+}
+.festival-card {
+  border-radius: var(--radius-lg); overflow: hidden; position: relative;
+  height: 280px; cursor: pointer; transition: var(--transition-spring);
+}
+.festival-card:hover { transform: scale(1.02); }
+.festival-card:hover .festival-overlay { opacity: 1; }
+.festival-card.big { grid-column: span 2; }
+
+.festival-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.festival-emoji { font-size: 4.5rem; animation: emojiFloat 3s ease-in-out infinite; }
+.festival-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; color: white; margin-top: 12px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.festival-count { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+.festival-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.5); opacity: 0;
+  transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center;
+}
+.festival-btn {
+  padding: 12px 28px; border-radius: var(--radius-full);
+  background: white; color: #1a1830; font-weight: 700; font-size: 0.9rem;
+  transition: var(--transition-spring);
+}
+.festival-btn:hover { transform: scale(1.05); }
+
+/* ============ CUSTOMIZER / CREATE WISH ============ */
+.customizer {
+  display: grid; grid-template-columns: 1fr 420px; gap: 32px; align-items: start;
+}
+.customizer-preview {
+  border-radius: var(--radius-lg); overflow: hidden;
+  aspect-ratio: 4/5; max-height: 600px;
+  position: relative; box-shadow: var(--shadow-card), var(--shadow-glow);
+  display: flex; align-items: center; justify-content: center;
+}
+.preview-card-content {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 40px; text-align: center; color: white; position: relative;
+}
+.preview-emoji { font-size: 5rem; margin-bottom: 20px; animation: emojiFloat 3s ease-in-out infinite; }
+.preview-to { font-size: 0.9rem; opacity: 0.7; margin-bottom: 8px; }
+.preview-name-display { font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; }
+.preview-message { font-size: 1rem; opacity: 0.9; line-height: 1.7; font-family: var(--font-handwrite); }
+.preview-from { margin-top: 24px; font-size: 0.85rem; opacity: 0.7; }
+
+.particles-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.particle {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  animation: particleFall var(--dur) linear infinite;
+  animation-delay: var(--delay); font-size: var(--size);
+  left: var(--x); top: -10%;
+}
+@keyframes particleFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
-#noBtn {
-  position: absolute;
-  background: #ff4d6d;
-  color: white;
-  border: 2px solid white;
+.customizer-controls { display: flex; flex-direction: column; gap: 20px; }
+.control-group { background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 20px; }
+.control-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+.form-input {
+  width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+  background: var(--bg-secondary); border: 1.5px solid var(--border-glass);
+  color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem;
+  transition: var(--transition-fast); outline: none;
+}
+.form-input:focus { border-color: var(--accent-violet); box-shadow: 0 0 0 3px rgba(139,92,246,0.15); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+
+.color-palette { display: flex; gap: 10px; flex-wrap: wrap; }
+.color-swatch {
+  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+  transition: var(--transition-spring); border: 3px solid transparent;
+  position: relative;
+}
+.color-swatch:hover { transform: scale(1.2); }
+.color-swatch.active { border-color: white; box-shadow: 0 0 0 3px var(--accent-violet); }
+
+.theme-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.theme-option {
+  border-radius: var(--radius-sm); overflow: hidden; cursor: pointer;
+  height: 60px; transition: var(--transition-spring);
+  border: 2px solid transparent; position: relative;
+}
+.theme-option:hover { transform: scale(1.05); }
+.theme-option.active { border-color: var(--accent-violet); box-shadow: 0 0 0 2px rgba(139,92,246,0.3); }
+.theme-option::after { content: attr(data-name); position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 0.65rem; font-weight: 600; padding: 4px; text-align: center; }
+
+.font-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+.font-btn {
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  background: var(--bg-secondary); border: 1.5px solid var(--border-glass);
+  font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: var(--transition-fast);
+}
+.font-btn:hover, .font-btn.active { border-color: var(--accent-violet); color: var(--accent-violet); background: rgba(139,92,246,0.08); }
+
+.ai-btn {
+  width: 100%; padding: 14px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(236,72,153,0.1));
+  border: 1.5px solid rgba(139,92,246,0.3);
+  color: var(--text-primary); font-size: 0.92rem; font-weight: 600;
+  transition: var(--transition-spring);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.ai-btn:hover { background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(236,72,153,0.2)); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+
+.action-btns { display: flex; gap: 12px; }
+.btn-download {
+  flex: 1; padding: 14px; border-radius: var(--radius-md);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  color: var(--text-primary); font-weight: 600; font-size: 0.9rem;
+  transition: var(--transition-fast);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-download:hover { background: var(--bg-glass-hover); border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+.btn-share-create {
+  flex: 2; padding: 14px; border-radius: var(--radius-md);
+  background: var(--gradient-btn); color: white; font-weight: 700; font-size: 0.9rem;
+  box-shadow: var(--shadow-btn); transition: var(--transition-spring);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-share-create:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(139,92,246,0.5); }
+
+/* ============ SHARE MODAL ============ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; pointer-events: none; transition: var(--transition-smooth);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+
+.modal-box {
+  width: 100%; max-width: 480px; border-radius: var(--radius-xl);
+  background: var(--bg-secondary); border: 1px solid var(--border-glass);
+  padding: 32px; box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  transform: translateY(30px) scale(0.95); transition: var(--transition-spring);
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.modal-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; }
+.modal-close { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-glass); border: 1px solid var(--border-glass); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition-fast); }
+.modal-close:hover { background: rgba(244,63,94,0.15); color: var(--accent-rose); }
+
+.share-platforms { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+.share-platform {
+  padding: 16px 12px; border-radius: var(--radius-md);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  cursor: pointer; transition: var(--transition-spring);
+  border: 1.5px solid var(--border-glass); background: var(--bg-card);
+}
+.share-platform:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+.platform-icon { font-size: 1.8rem; }
+.platform-name { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+
+.share-link-row { display: flex; gap: 10px; }
+.share-link-input {
+  flex: 1; padding: 12px 16px; border-radius: var(--radius-sm);
+  background: var(--bg-primary); border: 1px solid var(--border-glass);
+  color: var(--text-secondary); font-size: 0.82rem; outline: none;
+}
+.copy-btn {
+  padding: 12px 20px; border-radius: var(--radius-sm);
+  background: var(--gradient-btn); color: white; font-weight: 600; font-size: 0.85rem;
+  transition: var(--transition-fast);
+}
+.copy-btn:hover { transform: scale(1.05); }
+
+.qr-section { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-glass); }
+.qr-placeholder { width: 100px; height: 100px; margin: 12px auto; border-radius: var(--radius-sm); background: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+
+/* ============ AUTH MODAL ============ */
+.auth-tabs { display: flex; gap: 4px; background: var(--bg-primary); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 24px; }
+.auth-tab { flex: 1; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-muted); transition: var(--transition-fast); text-align: center; cursor: pointer; }
+.auth-tab.active { background: var(--gradient-btn); color: white; }
+
+.social-auth { display: flex; gap: 12px; margin-bottom: 20px; }
+.social-btn {
+  flex: 1; padding: 12px; border-radius: var(--radius-sm);
+  background: var(--bg-card); border: 1px solid var(--border-glass);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 0.88rem; font-weight: 600; color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+.social-btn:hover { background: var(--bg-glass-hover); border-color: var(--accent-violet); }
+
+.divider { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin: 16px 0; position: relative; }
+.divider::before, .divider::after { content:''; position:absolute; top:50%; width:42%; height:1px; background:var(--border-glass); }
+.divider::before { left:0; }
+.divider::after { right:0; }
+
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+
+/* ============ ADMIN DASHBOARD ============ */
+.admin-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; gap: 0; }
+.admin-sidebar {
+  background: var(--bg-secondary); border-right: 1px solid var(--border-glass);
+  padding: 24px 16px; display: flex; flex-direction: column; gap: 8px;
+  position: fixed; top: 0; left: 0; bottom: 0; width: 260px; z-index: 100;
+  overflow-y: auto;
+}
+.admin-logo { padding: 8px 12px; margin-bottom: 16px; }
+.sidebar-section { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); padding: 8px 12px; margin-top: 8px; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+  border-radius: var(--radius-sm); color: var(--text-secondary);
+  font-size: 0.88rem; font-weight: 500; cursor: pointer;
+  transition: var(--transition-fast); text-decoration: none;
+}
+.sidebar-item:hover, .sidebar-item.active { color: var(--text-primary); background: var(--bg-glass); }
+.sidebar-item.active { background: rgba(139,92,246,0.12); color: var(--accent-violet); }
+.sidebar-icon { font-size: 1.1rem; width: 22px; text-align: center; }
+.sidebar-badge { margin-left: auto; background: var(--accent-rose); color: white; font-size: 0.65rem; font-weight: 800; padding: 2px 7px; border-radius: var(--radius-full); }
+
+.admin-main { margin-left: 260px; padding: 32px; min-height: 100vh; }
+.admin-header { margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; }
+.admin-title { font-family: var(--font-display); font-size: 2rem; font-weight: 900; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-bottom: 32px; }
+.stat-card {
+  border-radius: var(--radius-md); padding: 24px;
+  background: var(--bg-card); border: 1px solid var(--border-glass);
+  position: relative; overflow: hidden;
+}
+.stat-card::before { content:''; position:absolute; top:-30px; right:-30px; width:100px; height:100px; border-radius:50%; opacity:0.1; }
+.stat-card:nth-child(1)::before { background:var(--accent-violet); }
+.stat-card:nth-child(2)::before { background:var(--accent-pink); }
+.stat-card:nth-child(3)::before { background:var(--accent-gold); }
+.stat-card:nth-child(4)::before { background:var(--accent-cyan); }
+.stat-card-icon { font-size: 2rem; margin-bottom: 12px; }
+.stat-card-val { font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; }
+.stat-card-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+.stat-card-change { font-size: 0.78rem; font-weight: 600; margin-top: 8px; }
+.change-up { color: var(--accent-green); }
+.change-down { color: var(--accent-rose); }
+
+.admin-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; }
+.admin-card { border-radius: var(--radius-md); background: var(--bg-card); border: 1px solid var(--border-glass); padding: 24px; }
+.admin-card-title { font-weight: 700; font-size: 1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+.chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+.chart-bar { flex: 1; border-radius: 4px 4px 0 0; background: var(--gradient-btn); opacity: 0.7; transition: var(--transition-fast); min-width: 20px; }
+.chart-bar:hover { opacity: 1; }
+
+.user-list { display: flex; flex-direction: column; gap: 12px; }
+.user-item { display: flex; align-items: center; gap: 12px; }
+.user-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-btn); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: white; flex-shrink: 0; }
+.user-info { flex: 1; min-width: 0; }
+.user-name { font-weight: 600; font-size: 0.88rem; }
+.user-email { font-size: 0.75rem; color: var(--text-muted); }
+.user-stat { font-size: 0.75rem; color: var(--accent-violet); font-weight: 600; }
+
+/* ============ PROFILE PAGE ============ */
+.profile-hero {
+  padding: 100px 24px 60px; text-align: center;
+  background: var(--gradient-card); position: relative;
+}
+.profile-avatar {
+  width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 20px;
+  background: var(--gradient-btn); border: 4px solid var(--bg-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; color: white; font-weight: 700; box-shadow: var(--shadow-glow);
+}
+.profile-name { font-family: var(--font-display); font-size: 2rem; font-weight: 900; }
+.profile-bio { color: var(--text-secondary); margin-top: 8px; }
+.profile-stats { display: flex; justify-content: center; gap: 40px; margin-top: 24px; }
+.profile-stat-val { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; }
+.profile-stat-label { font-size: 0.78rem; color: var(--text-muted); }
+
+.profile-tabs { display: flex; border-bottom: 1px solid var(--border-glass); padding: 0 24px; overflow-x: auto; }
+.profile-tab { padding: 14px 20px; font-weight: 600; font-size: 0.9rem; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; transition: var(--transition-fast); white-space: nowrap; }
+.profile-tab.active { color: var(--accent-violet); border-bottom-color: var(--accent-violet); }
+.profile-tab:hover { color: var(--text-primary); }
+
+/* ============ NOTIFICATION TOAST ============ */
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 3000; display: flex; flex-direction: column; gap: 12px; }
+.toast {
+  max-width: 340px; border-radius: var(--radius-md);
+  background: var(--bg-secondary); border: 1px solid var(--border-glass);
+  padding: 16px 20px; box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  display: flex; align-items: flex-start; gap: 12px;
+  transform: translateX(120%); transition: var(--transition-spring);
+}
+.toast.show { transform: translateX(0); }
+.toast-icon { font-size: 1.4rem; flex-shrink: 0; }
+.toast-content { flex: 1; }
+.toast-title { font-weight: 700; font-size: 0.9rem; }
+.toast-msg { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px; }
+
+/* ============ FOOTER ============ */
+.footer {
+  border-top: 1px solid var(--border-glass);
+  padding: 64px 24px 32px;
+  position: relative; z-index: 1;
+  background: var(--bg-secondary);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr repeat(3,1fr); gap: 40px; margin-bottom: 48px; }
+.footer-brand { }
+.footer-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-tagline { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; max-width: 280px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+.social-link {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition-fast);
+}
+.social-link:hover { background: var(--gradient-btn); border-color: transparent; transform: translateY(-3px); }
+
+.footer-col-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; }
+.footer-link { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; transition: var(--transition-fast); }
+.footer-link:hover { color: var(--accent-violet); }
+
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border-glass); }
+.footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+.footer-heart { color: var(--accent-rose); animation: heartBeat 1.2s ease-in-out infinite; display: inline-block; }
+@keyframes heartBeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+.footer-badges { display: flex; gap: 12px; }
+.footer-badge {
+  padding: 6px 14px; border-radius: var(--radius-full);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+  display: flex; align-items: center; gap: 6px;
 }
 
-/* Love Rain Animation */
-.love-rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+/* ============ MUSIC PLAYER ============ */
+.music-player {
+  position: fixed; bottom: 24px; left: 24px; z-index: 500;
+  background: var(--bg-secondary); backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass); border-radius: var(--radius-full);
+  padding: 10px 20px 10px 12px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-spring);
 }
+.music-player:hover { box-shadow: var(--shadow-glow); }
+.music-icon { font-size: 1.4rem; animation: musicSpin 3s linear infinite; }
+@keyframes musicSpin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+.music-info { }
+.music-title { font-size: 0.8rem; font-weight: 700; }
+.music-artist { font-size: 0.7rem; color: var(--text-muted); }
+.music-controls { display: flex; gap: 8px; align-items: center; }
+.music-btn { width: 30px; height: 30px; border-radius: 50%; background: var(--gradient-btn); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: white; transition: var(--transition-fast); }
+.music-btn:hover { transform: scale(1.15); }
 
-.love-drop {
-  position: absolute;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 24px;
-  animation: fall linear infinite;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+/* ============ AD PLACEMENTS ============ */
+.ad-banner {
+  border-radius: var(--radius-md); overflow: hidden;
+  background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(236,72,153,0.05));
+  border: 1px dashed rgba(139,92,246,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
 }
+.ad-banner.leaderboard { height: 90px; margin-bottom: 32px; }
+.ad-banner.in-feed { height: 120px; margin: 24px 0; }
+.ad-banner.sticky-mobile { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; z-index: 400; border-radius: 0; background: var(--bg-secondary); border-top: 1px solid var(--border-glass); display: none; }
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
+/* ============ PAGE TRANSITIONS ============ */
+.page { display: none; animation: pageIn 0.4s cubic-bezier(0.4,0,0.2,1); }
+.page.active { display: block; }
+@keyframes pageIn { 0%{opacity:0; transform:translateY(20px)} 100%{opacity:1; transform:none} }
 
-/* Confetti */
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  animation: confettiFall 2s ease-out forwards;
-  pointer-events: none;
-  z-index: 1001;
-  border-radius: 50%;
-}
+/* ============ SCROLL ANIMATIONS ============ */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.scroll-reveal.revealed { opacity: 1; transform: none; }
 
-@keyframes confettiFall {
-  0% { transform: translate(0, 0) rotateZ(0deg); opacity: 1; }
-  100% { transform: translate(var(--x), 100vh) rotateZ(var(--deg)); opacity: 0; }
-}
-
-/* Heart Pop Effect */
-.heart-pop {
-  position: absolute;
-  font-size: 30px;
-  animation: pop 1s ease-out forwards;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0; }
-}
-
-.share-section {
-  display: none;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
-
-.link-box {
-  word-break: break-all;
-  background: rgba(0,0,0,0.2);
-  padding: 10px;
+/* ============ LOADING SKELETON ============ */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-glass) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
   border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 13px;
-  color: white;
+}
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ============ MOBILE NAV MENU ============ */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--bg-secondary); backdrop-filter: blur(20px);
+  display: flex; flex-direction: column;
+  padding: 100px 32px 32px;
+  transform: translateX(100%); transition: var(--transition-smooth);
+}
+.mobile-menu.active { transform: translateX(0); }
+.mobile-nav-link { display: block; padding: 16px 0; font-size: 1.3rem; font-weight: 700; border-bottom: 1px solid var(--border-glass); color: var(--text-primary); transition: var(--transition-fast); }
+.mobile-nav-link:hover { color: var(--accent-violet); padding-left: 12px; }
+
+/* ============ BLOG PAGE ============ */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 24px; }
+.blog-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border-glass); transition: var(--transition-spring); cursor: pointer; }
+.blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-glow); border-color: var(--accent-violet); }
+.blog-thumb { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+.blog-content { padding: 24px; }
+.blog-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-violet); margin-bottom: 10px; }
+.blog-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; line-height: 1.3; margin-bottom: 10px; }
+.blog-excerpt { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+.blog-meta { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-glass); font-size: 0.75rem; color: var(--text-muted); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero-visual { display: none; }
+  .customizer { grid-template-columns: 1fr; }
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-sidebar { display: none; }
+  .admin-main { margin-left: 0; }
+  .festival-grid { grid-template-columns: repeat(2,1fr); }
+  .festival-card.big { grid-column: span 2; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .admin-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
-.share-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .btn-login { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats { gap: 24px; }
+  .categories-grid { grid-template-columns: repeat(3,1fr); }
+  .cards-grid { grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); }
+  .festival-grid { grid-template-columns: 1fr 1fr; }
+  .festival-card.big { grid-column: span 2; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .music-player { display: none; }
+  .ad-banner.sticky-mobile { display: flex; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .share-platforms { grid-template-columns: repeat(3,1fr); }
 }
 
-.share-btn {
-  padding: 10px 20px;
-  font-size: 14px;
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.4rem; }
+  .hero-actions { flex-direction: column; }
+  .btn-hero-primary, .btn-hero-secondary { justify-content: center; }
+  .categories-grid { grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .hero-stats { justify-content: space-between; }
+  .festival-grid { grid-template-columns: 1fr; }
+  .festival-card.big { grid-column: span 1; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
 }
 
-.whatsapp-btn { background: #25D366; color: white; }
-.copy-btn { background: #555; color: white; }
-
-/* Typewriter cursor effect */
-.typewriter {
-  border-right: 2px solid rgba(255, 255, 255, 0.8);
-  animation: blink 0.7s infinite;
+/* ============ CONFETTI ============ */
+.confetti-piece {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 10px; height: 10px;
+  animation: confettiFall var(--dur) ease-in forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
-@keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: rgba(255, 255, 255, 0.8); }
+/* ============ SEARCH BAR ============ */
+.search-bar {
+  position: relative; max-width: 600px; margin: 0 auto 48px;
+  animation: fadeSlideUp 0.6s 0.5s ease both;
+}
+.search-input {
+  width: 100%; padding: 16px 60px 16px 24px;
+  border-radius: var(--radius-full);
+  background: var(--bg-glass); backdrop-filter: blur(20px);
+  border: 1.5px solid var(--border-glass);
+  color: var(--text-primary); font-size: 1rem; outline: none;
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-fast);
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus { border-color: var(--accent-violet); box-shadow: 0 0 0 4px rgba(139,92,246,0.15), var(--shadow-card); }
+.search-btn {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: var(--radius-full);
+  background: var(--gradient-btn); display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: white; transition: var(--transition-spring);
+}
+.search-btn:hover { transform: translateY(-50%) scale(1.1); }
+
+/* ============ TABS ============ */
+.tabs { display: flex; gap: 6px; padding: 6px; background: var(--bg-secondary); border-radius: var(--radius-full); margin-bottom: 32px; border: 1px solid var(--border-glass); }
+.tab { flex: 1; text-align: center; padding: 10px 16px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: var(--transition-fast); white-space: nowrap; }
+.tab.active { background: var(--gradient-btn); color: white; box-shadow: var(--shadow-btn); }
+.tab:hover:not(.active) { color: var(--text-primary); background: var(--bg-glass); }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
 }
 
-/* Romantic text styles */
-.romantic-text {
-  color: #ffeb3b;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+/* ============ LANG SWITCHER ============ */
+.lang-btn {
+  padding: 6px 12px; border-radius: var(--radius-full);
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: var(--transition-fast);
+}
+.lang-btn:hover, .lang-btn.active { color: var(--accent-violet); border-color: rgba(139,92,246,0.3); }
+
+/* ============ NOTIFICATION BELL ============ */
+.notif-btn {
+  position: relative; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-glass); border: 1px solid var(--border-glass);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition-fast);
+}
+.notif-btn:hover { background: var(--bg-glass-hover); }
+.notif-dot {
+  position: absolute; top: 8px; right: 8px; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--accent-rose);
+  border: 2px solid var(--bg-primary); animation: pulseDot 1.5s infinite;
 }
 
-.large-heart {
-  font-size: 40px;
-  margin: 15px 0;
-  animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
+/* ============ EMPTY STATE ============ */
+.empty-state { text-align: center; padding: 80px 20px; }
+.empty-state-icon { font-size: 5rem; margin-bottom: 20px; opacity: 0.5; }
+.empty-state-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; margin-bottom: 12px; }
+.empty-state-text { color: var(--text-secondary); margin-bottom: 28px; }
 </style>
 </head>
+
 <body>
+<!-- Animated Background -->
+<div class="animated-bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="stars" id="stars"></div>
 
-<!-- Love Rain Container -->
-<div class="love-rain" id="loveRain"></div>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <div class="logo-icon">🌟</div>
+    WishVerse Pro
+  </a>
 
-<!-- Input Page -->
-<div class="container" id="inputPage">
-  <h1>💖 Create Valentine Wish 💖</h1>
-  
-  <div class="input-group">
-    <input type="text" id="creatorName" placeholder="Your Name (যিনি দিচ্ছেন)" required>
-    <input type="text" id="partnerName" placeholder="Their Name (যিনি পাবেন)" required>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('explore')" id="nav-explore">Explore</a></li>
+    <li><a href="#" onclick="showPage('create')" id="nav-create">Create</a></li>
+    <li><a href="#" onclick="showPage('trending')" id="nav-trending">Trending</a></li>
+    <li><a href="#" onclick="showPage('blog')" id="nav-blog">Blog</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="lang-btn active" onclick="setLang('en')" id="lang-en">EN</button>
+    <button class="lang-btn" onclick="setLang('bn')" id="lang-bn">বাং</button>
+    <button class="notif-btn" onclick="showToast('🔔','New Wish!','Someone shared a card with you!')">
+      🔔<span class="notif-dot"></span>
+    </button>
+    <button class="btn-theme" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="btn-login" onclick="openModal('auth')">Sign In</button>
+    <button class="btn-primary" onclick="showPage('create')">✨ Create Wish</button>
+    <button class="hamburger" onclick="toggleMobileMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  
-  <button onclick="createWish()">
-    Create Beautiful Wish ❤️
-  </button>
-  
-  <div class="share-section" id="shareSection">
-    <p style="font-size: 14px;">Share this special wish:</p>
-    <div class="link-box" id="linkBox"></div>
-    
-    <div class="share-buttons">
-      <button class="share-btn copy-btn" onclick="copyLink()">
-        📋 Copy Link
-      </button>
-      <button class="share-btn whatsapp-btn" onclick="shareWhatsApp()">
-        📱 WhatsApp
-      </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-nav-link" href="#" onclick="showPage('home');closeMobileMenu()">🏠 Home</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('explore');closeMobileMenu()">🔍 Explore</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('create');closeMobileMenu()">✨ Create Wish</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('trending');closeMobileMenu()">🔥 Trending</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('festivals');closeMobileMenu()">🎊 Festivals</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('profile');closeMobileMenu()">👤 Profile</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('blog');closeMobileMenu()">📝 Blog</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('admin');closeMobileMenu()">⚙️ Admin</a>
+  <div style="margin-top:32px;display:flex;gap:12px">
+    <button class="btn-login" style="flex:1;padding:14px;text-align:center" onclick="openModal('auth')">Sign In</button>
+    <button class="btn-primary" style="flex:1;padding:14px" onclick="showPage('create');closeMobileMenu()">✨ Create</button>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Music Player -->
+<div class="music-player" id="musicPlayer">
+  <div class="music-icon">🎵</div>
+  <div class="music-info">
+    <div class="music-title">Wish You Well</div>
+    <div class="music-artist">WishVerse Radio</div>
+  </div>
+  <div class="music-controls">
+    <button class="music-btn" onclick="prevTrack()">⏮</button>
+    <button class="music-btn" onclick="togglePlay()" id="playBtn">⏸</button>
+    <button class="music-btn" onclick="nextTrack()">⏭</button>
+  </div>
+</div>
+
+<!-- Sticky Mobile Ad -->
+<div class="ad-banner sticky-mobile" id="stickyAd">
+  📢 Advertisement · <span style="color:var(--accent-violet)">Your Ad Here</span>
+</div>
+
+<!-- ============================================================
+     HOME PAGE
+     ============================================================ -->
+<div class="page active" id="page-home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span id="badge-text">🚀 Most Viral Greeting Platform</span>
+        </div>
+        <h1>
+          Send Wishes That
+          <span class="gradient-text" id="hero-gradient-text">Touch Hearts</span>
+        </h1>
+        <p class="hero-desc" id="hero-desc">Create stunning animated greeting cards for birthdays, Eid, weddings & every special moment. Share instantly on WhatsApp, Facebook & TikTok.</p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="showPage('create')">
+            ✨ <span id="btn-create-text">Create Your Wish</span>
+          </button>
+          <button class="btn-hero-secondary" onclick="showPage('explore')">
+            🔍 <span id="btn-explore-text">Explore Cards</span>
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num" id="stat1">2.4M+</div><div class="stat-label" id="stat-label1">Cards Created</div></div>
+          <div class="stat"><div class="stat-num" id="stat2">190+</div><div class="stat-label" id="stat-label2">Countries</div></div>
+          <div class="stat"><div class="stat-num" id="stat3">50K+</div><div class="stat-label" id="stat-label3">Daily Shares</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual Cards -->
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-card">
+          <div class="card-bg-birthday" style="width:100%;height:100%">
+            <div class="mini-card-content">
+              <div class="mini-card-emoji">🎂</div>
+              <div class="mini-card-title">Happy Birthday!</div>
+              <div class="mini-card-text">May your day be magical</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="card-bg-love" style="width:100%;height:100%">
+            <div class="mini-card-content">
+              <div class="mini-card-emoji">💕</div>
+              <div class="mini-card-title">With Love</div>
+              <div class="mini-card-text">Forever & always yours</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="card-bg-eid" style="width:100%;height:100%">
+            <div class="mini-card-content">
+              <div class="mini-card-emoji">🌙</div>
+              <div class="mini-card-title">Eid Mubarak</div>
+              <div class="mini-card-text">Blessed & joyful celebration</div>
+            </div>
+          </div>
+        </div>
+        <div class="float-badge">🔥 Trending</div>
+        <div class="float-badge">💝 12.5K Shares</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AdSense Banner -->
+  <div class="container">
+    <div class="ad-banner leaderboard">📢 Google AdSense — 728×90 Leaderboard</div>
+  </div>
+
+  <!-- Categories Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag" id="cat-tag">All Categories</div>
+        <h2 class="section-title" id="cat-title">Find Your Perfect Wish</h2>
+        <p class="section-subtitle" id="cat-subtitle">Choose from 25+ celebration categories crafted with love</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- In-Feed Ad -->
+  <div class="container"><div class="ad-banner in-feed">📢 In-Feed Advertisement</div></div>
+
+  <!-- Trending Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">🔥 Hot Right Now</div>
+        <h2 class="section-title">Trending Wishes</h2>
+        <p class="section-subtitle">The most shared cards this week</p>
+      </div>
+      <div class="trending-scroll">
+        <div class="trending-row" id="trendingRow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">⭐ Featured</div>
+        <h2 class="section-title">Beautiful Greeting Cards</h2>
+      </div>
+      <div class="cards-grid" id="featuredCards"></div>
+    </div>
+  </section>
+
+  <!-- Festival Section -->
+  <section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass)">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">🎊 Festivals</div>
+        <h2 class="section-title">Festival Special Cards</h2>
+        <p class="section-subtitle">Beautiful wishes for every celebration</p>
+      </div>
+      <div class="festival-grid" id="festivalGrid"></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">💬 Loved By All</div>
+        <h2 class="section-title">What People Say</h2>
+      </div>
+      <div class="cards-grid" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="text-align:center;background:var(--bg-secondary);border-top:1px solid var(--border-glass)">
+    <div class="container">
+      <div style="max-width:600px;margin:0 auto" class="scroll-reveal">
+        <div style="font-size:4rem;margin-bottom:20px">✨</div>
+        <h2 class="section-title">Start Creating Magic Today</h2>
+        <p class="section-subtitle" style="margin-bottom:40px">Join 2.4 million users creating beautiful wishes every day</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <button class="btn-hero-primary" onclick="showPage('create')">✨ Create Free Wish</button>
+          <button class="btn-hero-secondary" onclick="openModal('auth')">🚀 Join WishVerse</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <div class="logo-icon">🌟</div>
+            <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;background:var(--gradient-btn);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WishVerse Pro</span>
+          </div>
+          <p class="footer-tagline">Create, customize & share beautiful animated greeting cards for every occasion. Make every wish unforgettable.</p>
+          <div class="footer-socials">
+            <a class="social-link" href="#" title="Facebook">📘</a>
+            <a class="social-link" href="#" title="Instagram">📸</a>
+            <a class="social-link" href="#" title="Twitter">🐦</a>
+            <a class="social-link" href="#" title="YouTube">📺</a>
+            <a class="social-link" href="#" title="TikTok">🎵</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Explore</div>
+          <a class="footer-link" href="#" onclick="showPage('home')">Home</a>
+          <a class="footer-link" href="#" onclick="showPage('explore')">All Categories</a>
+          <a class="footer-link" href="#" onclick="showPage('trending')">Trending</a>
+          <a class="footer-link" href="#" onclick="showPage('festivals')">Festivals</a>
+          <a class="footer-link" href="#" onclick="showPage('create')">Create Wish</a>
+        </div>
+        <div>
+          <div class="footer-col-title">Categories</div>
+          <a class="footer-link" href="#" onclick="filterCategory('Birthday')">Birthday</a>
+          <a class="footer-link" href="#" onclick="filterCategory('Eid')">Eid Mubarak</a>
+          <a class="footer-link" href="#" onclick="filterCategory('Love')">Love & Romance</a>
+          <a class="footer-link" href="#" onclick="filterCategory('Friendship')">Friendship</a>
+          <a class="footer-link" href="#" onclick="filterCategory('Islamic Wishes')">Islamic Wishes</a>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <a class="footer-link" href="#">About Us</a>
+          <a class="footer-link" href="#">Privacy Policy</a>
+          <a class="footer-link" href="#">Terms of Service</a>
+          <a class="footer-link" href="#">Contact Us</a>
+          <a class="footer-link" href="#" onclick="showPage('blog')">Blog</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 WishVerse Pro. Made with <span class="footer-heart">❤️</span> for everyone.</div>
+        <div class="footer-badges">
+          <div class="footer-badge">🔒 SSL Secured</div>
+          <div class="footer-badge">⚡ PWA Ready</div>
+          <div class="footer-badge">🌍 Multi-Language</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     EXPLORE PAGE
+     ============================================================ -->
+<div class="page" id="page-explore">
+  <div style="padding-top:80px">
+    <section class="section">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <div class="section-tag">🔍 Discover</div>
+          <h2 class="section-title">Explore All Cards</h2>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Search wishes, occasions, categories..." id="exploreSearch" oninput="filterCards()">
+          <button class="search-btn">🔍</button>
+        </div>
+        <div class="tabs" id="exploreTabs">
+          <div class="tab active" onclick="setExploreFilter('all',this)">✨ All</div>
+          <div class="tab" onclick="setExploreFilter('Birthday',this)">🎂 Birthday</div>
+          <div class="tab" onclick="setExploreFilter('Love',this)">💕 Love</div>
+          <div class="tab" onclick="setExploreFilter('Eid',this)">🌙 Eid</div>
+          <div class="tab" onclick="setExploreFilter('Friendship',this)">👫 Friends</div>
+          <div class="tab" onclick="setExploreFilter('Islamic Wishes',this)">🕌 Islamic</div>
+          <div class="tab" onclick="setExploreFilter('Bengali Festival Wishes',this)">🇧🇩 Bengali</div>
+        </div>
+        <div class="cards-grid" id="exploreCards"></div>
+        <div style="text-align:center;margin-top:48px">
+          <button class="btn-primary" style="padding:14px 40px;font-size:1rem" onclick="loadMoreCards()">Load More Cards</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     CREATE / CUSTOMIZER PAGE
+     ============================================================ -->
+<div class="page" id="page-create">
+  <div style="padding-top:80px">
+    <section class="section">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <div class="section-tag">✨ Card Studio</div>
+          <h2 class="section-title">Create Your Perfect Wish</h2>
+          <p class="section-subtitle">Personalize every detail — name, message, theme, music & more</p>
+        </div>
+
+        <div class="customizer">
+          <!-- Preview -->
+          <div>
+            <div class="customizer-preview" id="cardPreview" style="background:linear-gradient(145deg,#ff6b6b,#feca57,#ff9ff3)">
+              <div class="particles-container" id="previewParticles"></div>
+              <div class="preview-card-content" id="previewContent" style="position:relative;z-index:1">
+                <div class="preview-emoji" id="previewEmoji">🎂</div>
+                <div class="preview-to" id="previewTo">To: My Dearest</div>
+                <div class="preview-name-display" id="previewName" style="font-family:var(--font-display)">Your Name Here</div>
+                <div class="preview-message" id="previewMessage">May your birthday be filled with joy, laughter, and all the things that make you smile. You deserve the best of everything! 🌟</div>
+                <div class="preview-from" id="previewFrom">— With Love 💕</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:16px">
+              <button class="btn-download" onclick="showToast('📸','Downloading...','Your card is being prepared!')">📸 Screenshot</button>
+              <button class="btn-download" onclick="showToast('🎥','Video Export','Creating video version...')">🎥 Export Video</button>
+              <button class="btn-download" onclick="openModal('share')">📤 Share</button>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="customizer-controls">
+            <!-- Category -->
+            <div class="control-group">
+              <div class="control-label">🎭 Occasion</div>
+              <select class="form-input" id="ctrlCategory" onchange="updatePreviewCategory()">
+                <option>Birthday</option><option>Love</option><option>Eid</option><option>Friendship</option>
+                <option>Anniversary</option><option>Good Morning</option><option>Good Night</option>
+                <option>Ramadan</option><option>Christmas</option><option>New Year</option>
+                <option>Mother's Day</option><option>Father's Day</option><option>Wedding</option>
+                <option>Congratulations</option><option>Islamic Wishes</option><option>Bengali Festival Wishes</option>
+                <option>Valentine's Day</option><option>Motivational Quotes</option>
+              </select>
+            </div>
+
+            <!-- Recipient Name -->
+            <div class="control-group">
+              <div class="control-label">👤 Recipient Name</div>
+              <input type="text" class="form-input" id="ctrlName" placeholder="Enter their name..." value="Rayhan" oninput="document.getElementById('previewName').textContent=this.value||'Your Name'">
+            </div>
+
+            <!-- Message -->
+            <div class="control-group">
+              <div class="control-label">💬 Wish Message</div>
+              <textarea class="form-input" id="ctrlMsg" rows="4" oninput="document.getElementById('previewMessage').textContent=this.value">May your birthday be filled with joy, laughter, and all the things that make you smile. You deserve the best of everything! 🌟</textarea>
+              <button class="ai-btn" style="margin-top:12px" onclick="generateAIMessage()">
+                🤖 Generate AI Message
+              </button>
+            </div>
+
+            <!-- Sender -->
+            <div class="control-group">
+              <div class="control-label">✍️ From (Your Name)</div>
+              <input type="text" class="form-input" id="ctrlFrom" placeholder="Your name..." value="With Love" oninput="document.getElementById('previewFrom').textContent='— '+this.value+' 💕'">
+            </div>
+
+            <!-- Theme -->
+            <div class="control-group">
+              <div class="control-label">🎨 Card Theme</div>
+              <div class="theme-selector" id="themeSelector">
+                <div class="theme-option active" data-name="Sunset" style="background:linear-gradient(145deg,#ff6b6b,#feca57,#ff9ff3)" onclick="setTheme(this,'linear-gradient(145deg,#ff6b6b,#feca57,#ff9ff3)')"></div>
+                <div class="theme-option" data-name="Ocean" style="background:linear-gradient(145deg,#667eea,#764ba2)" onclick="setTheme(this,'linear-gradient(145deg,#667eea,#764ba2)')"></div>
+                <div class="theme-option" data-name="Eid Night" style="background:linear-gradient(145deg,#1e3c72,#2a5298,#00b09b)" onclick="setTheme(this,'linear-gradient(145deg,#1e3c72,#2a5298,#00b09b)')"></div>
+                <div class="theme-option" data-name="Rose" style="background:linear-gradient(145deg,#ff4757,#ff6b81)" onclick="setTheme(this,'linear-gradient(145deg,#ff4757,#ff6b81)')"></div>
+                <div class="theme-option" data-name="Forest" style="background:linear-gradient(145deg,#134e5e,#71b280)" onclick="setTheme(this,'linear-gradient(145deg,#134e5e,#71b280)')"></div>
+                <div class="theme-option" data-name="Galaxy" style="background:linear-gradient(145deg,#0f0c29,#302b63,#24243e)" onclick="setTheme(this,'linear-gradient(145deg,#0f0c29,#302b63,#24243e)')"></div>
+              </div>
+            </div>
+
+            <!-- Font -->
+            <div class="control-group">
+              <div class="control-label">🔤 Font Style</div>
+              <div class="font-selector">
+                <button class="font-btn active" onclick="setFont(this,'Playfair Display')" style="font-family:'Playfair Display'">Playfair</button>
+                <button class="font-btn" onclick="setFont(this,'DM Sans')" style="font-family:'DM Sans'">Modern</button>
+                <button class="font-btn" onclick="setFont(this,'Kalam')" style="font-family:'Kalam'">Handwrite</button>
+                <button class="font-btn" onclick="setFont(this,'Georgia')" style="font-family:'Georgia'">Classic</button>
+              </div>
+            </div>
+
+            <!-- Particles -->
+            <div class="control-group">
+              <div class="control-label">✨ Particle Effects</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button class="font-btn active" onclick="setParticles(this,'🎉')">🎉 Confetti</button>
+                <button class="font-btn" onclick="setParticles(this,'⭐')">⭐ Stars</button>
+                <button class="font-btn" onclick="setParticles(this,'❤️')">❤️ Hearts</button>
+                <button class="font-btn" onclick="setParticles(this,'🌸')">🌸 Flowers</button>
+                <button class="font-btn" onclick="setParticles(this,'💎')">💎 Gems</button>
+                <button class="font-btn" onclick="setParticles(this,'')">✖ None</button>
+              </div>
+            </div>
+
+            <!-- Language -->
+            <div class="control-group">
+              <div class="control-label">🌐 Language</div>
+              <div style="display:flex;gap:8px">
+                <button class="font-btn active" onclick="setLang('en')">🇬🇧 English</button>
+                <button class="font-btn" onclick="setLang('bn')">🇧🇩 বাংলা</button>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="action-btns">
+              <button class="btn-download" onclick="showToast('🔗','Link Copied!','Share link is ready to paste!')">🔗 Copy Link</button>
+              <button class="btn-share-create" onclick="fireConfetti();openModal('share')">🚀 Share This Card</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     TRENDING PAGE
+     ============================================================ -->
+<div class="page" id="page-trending">
+  <div style="padding-top:80px">
+    <section class="section">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <div class="section-tag">🔥 Viral</div>
+          <h2 class="section-title">Trending This Week</h2>
+        </div>
+        <div class="tabs">
+          <div class="tab active">🔥 This Week</div>
+          <div class="tab">📅 This Month</div>
+          <div class="tab">⭐ All Time</div>
+        </div>
+        <div class="cards-grid" id="trendingCards"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     FESTIVALS PAGE
+     ============================================================ -->
+<div class="page" id="page-festivals">
+  <div style="padding-top:80px">
+    <section class="section">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <div class="section-tag">🎊 Celebrations</div>
+          <h2 class="section-title">Festival Special Wishes</h2>
+          <p class="section-subtitle">Curated collections for every occasion</p>
+        </div>
+        <div class="festival-grid" id="festivalsPageGrid"></div>
+        <div style="margin-top:60px">
+          <div class="section-header">
+            <h2 class="section-title">Festival Cards</h2>
+          </div>
+          <div class="cards-grid" id="festivalsCards"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROFILE PAGE
+     ============================================================ -->
+<div class="page" id="page-profile">
+  <div style="padding-top:70px">
+    <div class="profile-hero" style="background:var(--bg-secondary);border-bottom:1px solid var(--border-glass)">
+      <div class="profile-avatar">R</div>
+      <div class="profile-name">Rayhan Ahmed</div>
+      <div class="profile-bio">💫 Creating beautiful wishes since 2024 · Dhaka, Bangladesh 🇧🇩</div>
+      <div class="profile-stats">
+        <div><div class="profile-stat-val">127</div><div class="profile-stat-label">Cards Created</div></div>
+        <div><div class="profile-stat-val">4.8K</div><div class="profile-stat-label">Total Shares</div></div>
+        <div><div class="profile-stat-val">89</div><div class="profile-stat-label">Saved Cards</div></div>
+        <div><div class="profile-stat-val">1.2K</div><div class="profile-stat-label">Hearts Received</div></div>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px">
+        <button class="btn-primary" onclick="showPage('create')">✨ Create New Card</button>
+        <button class="btn-login" onclick="showToast('⚙️','Settings','Opening profile settings...')">⚙️ Edit Profile</button>
+      </div>
+    </div>
+    <div class="profile-tabs">
+      <div class="profile-tab active" onclick="setProfileTab(this,'my-cards')">My Cards</div>
+      <div class="profile-tab" onclick="setProfileTab(this,'saved')">❤️ Saved</div>
+      <div class="profile-tab" onclick="setProfileTab(this,'activity')">📊 Activity</div>
+      <div class="profile-tab" onclick="setProfileTab(this,'settings')">⚙️ Settings</div>
+    </div>
+    <section class="section" style="padding-top:40px">
+      <div class="container">
+        <div class="cards-grid" id="profileCards"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     BLOG PAGE
+     ============================================================ -->
+<div class="page" id="page-blog">
+  <div style="padding-top:80px">
+    <section class="section">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <div class="section-tag">📝 Content</div>
+          <h2 class="section-title">WishVerse Blog</h2>
+          <p class="section-subtitle">Festival tips, wish ideas & celebration guides</p>
+        </div>
+        <div class="blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMIN PAGE
+     ============================================================ -->
+<div class="page" id="page-admin">
+  <div style="padding-top:70px">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <div class="admin-logo">
+          <div style="font-family:var(--font-display);font-weight:900;font-size:1.1rem;background:var(--gradient-btn);-webkit-background-clip:text;-webkit-text-fill-color:transparent">⚙️ Admin Panel</div>
+        </div>
+        <div class="sidebar-section">Overview</div>
+        <a class="sidebar-item active" onclick="setAdminView('dashboard')"><span class="sidebar-icon">📊</span> Dashboard</a>
+        <a class="sidebar-item" onclick="setAdminView('analytics')"><span class="sidebar-icon">📈</span> Analytics</a>
+        <div class="sidebar-section">Content</div>
+        <a class="sidebar-item" onclick="setAdminView('cards')"><span class="sidebar-icon">🎴</span> Manage Cards</a>
+        <a class="sidebar-item" onclick="setAdminView('categories')"><span class="sidebar-icon">📁</span> Categories</a>
+        <a class="sidebar-item" onclick="setAdminView('trending')"><span class="sidebar-icon">🔥</span> Trending Control</a>
+        <a class="sidebar-item" onclick="showToast('📝','Blog Manager','Opening post editor...')"><span class="sidebar-icon">📝</span> Blog Posts</a>
+        <div class="sidebar-section">Users</div>
+        <a class="sidebar-item" onclick="setAdminView('users')"><span class="sidebar-icon">👥</span> Users <span class="sidebar-badge">NEW</span></a>
+        <a class="sidebar-item" onclick="showToast('🛡️','Moderation','Loading reports...')"><span class="sidebar-icon">🛡️</span> Moderation</a>
+        <div class="sidebar-section">Monetization</div>
+        <a class="sidebar-item" onclick="showToast('💰','Ad Manager','Loading ad placements...')"><span class="sidebar-icon">💰</span> Ad Placements</a>
+        <a class="sidebar-item" onclick="showToast('🔔','Push Notifications','Opening sender...')"><span class="sidebar-icon">🔔</span> Push Notifs</a>
+        <a class="sidebar-item" onclick="showToast('🎁','Sponsored','Loading sponsored cards...')"><span class="sidebar-icon">🎁</span> Sponsored</a>
+        <div style="margin-top:auto;padding-top:24px">
+          <a class="sidebar-item" onclick="showPage('home')"><span class="sidebar-icon">🏠</span> Back to Site</a>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <div class="admin-header">
+          <div>
+            <div class="admin-title">Dashboard</div>
+            <div style="color:var(--text-muted);font-size:0.85rem">Welcome back, Admin 👋</div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <button class="btn-login" onclick="showToast('📤','Export','Generating report...')">📤 Export</button>
+            <button class="btn-primary" onclick="showToast('📢','Notification Sent!','Push sent to all users!')">🔔 Push Notify</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon">🃏</div>
+            <div class="stat-card-val">18,429</div>
+            <div class="stat-card-label">Total Cards</div>
+            <div class="stat-card-change change-up">↑ 12% this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">👥</div>
+            <div class="stat-card-val">2.41M</div>
+            <div class="stat-card-label">Total Users</div>
+            <div class="stat-card-change change-up">↑ 8.3% this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">📤</div>
+            <div class="stat-card-val">50.2K</div>
+            <div class="stat-card-label">Daily Shares</div>
+            <div class="stat-card-change change-up">↑ 24% vs yesterday</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">💰</div>
+            <div class="stat-card-val">$3,842</div>
+            <div class="stat-card-label">Revenue (MTD)</div>
+            <div class="stat-card-change change-up">↑ 18% vs last month</div>
+          </div>
+        </div>
+
+        <!-- Charts & Users -->
+        <div class="admin-grid">
+          <div class="admin-card">
+            <div class="admin-card-title">📊 Weekly Traffic</div>
+            <div class="chart-bars" id="adminChart"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.72rem;color:var(--text-muted)">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title">👥 Recent Users</div>
+            <div class="user-list" id="adminUserList"></div>
+          </div>
+        </div>
+
+        <!-- Recent Cards -->
+        <div class="admin-card" style="margin-top:20px">
+          <div class="admin-card-title">🃏 Recent Cards</div>
+          <div id="adminRecentCards" style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+              <thead>
+                <tr style="text-align:left;border-bottom:1px solid var(--border-glass)">
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Card</th>
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Category</th>
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Views</th>
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Shares</th>
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Status</th>
+                  <th style="padding:10px 12px;color:var(--text-muted);font-weight:600">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminCardsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </div>
 
-<!-- Wish Pages -->
-<div class="container page" id="page1" style="display: none;">
-  <h1 id="page1Title"></h1>
-  <p id="page1Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Continue ❤️
-  </button>
-</div>
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
 
-<div class="container page" id="page2" style="display: none;">
-  <h1>Every Moment with You 💫</h1>
-  <p id="page2Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Next Page 💝
-  </button>
-</div>
-
-<div class="container page" id="page3" style="display: none;">
-  <h1>My Promise to You 🤝</h1>
-  <p id="page3Text" class="typewriter"></p>
-  <button onclick="nextPage()">
-    Continue 🌹
-  </button>
-</div>
-
-<div class="container page" id="page4" style="display: none;">
-  <h1>A Special Question... 💍</h1>
-  <p>Will you be my Valentine forever?</p>
-  <div class="btn-group">
-    <button onclick="beMyValentine()" style="background: #ff4d6d; color: white;">
-      Yes! Forever ❤️
-    </button>
-    <button id="noBtn" onmouseover="moveNoButton()">
-      No
-    </button>
+<!-- Share Modal -->
+<div class="modal-overlay" id="modal-share" onclick="closeModalOnBg(event,'share')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">📤 Share This Card</div>
+      <button class="modal-close" onclick="closeModal('share')">✕</button>
+    </div>
+    <div class="share-platforms">
+      <div class="share-platform" style="background:rgba(24,119,242,0.08);border-color:rgba(24,119,242,0.2)" onclick="shareToFacebook()">
+        <div class="platform-icon">📘</div>
+        <div class="platform-name">Facebook</div>
+      </div>
+      <div class="share-platform" style="background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.2)" onclick="shareToWhatsApp()">
+        <div class="platform-icon">💬</div>
+        <div class="platform-name">WhatsApp</div>
+      </div>
+      <div class="share-platform" style="background:rgba(255,0,80,0.08);border-color:rgba(255,0,80,0.2)" onclick="shareToTikTok()">
+        <div class="platform-icon">🎵</div>
+        <div class="platform-name">TikTok</div>
+      </div>
+      <div class="share-platform" style="background:rgba(253,29,29,0.08);border-color:rgba(253,29,29,0.2)" onclick="showToast('📸','Instagram','Opening Instagram share...')">
+        <div class="platform-icon">📸</div>
+        <div class="platform-name">Instagram</div>
+      </div>
+      <div class="share-platform" style="background:rgba(29,155,240,0.08);border-color:rgba(29,155,240,0.2)" onclick="showToast('🐦','Twitter/X','Opening X share...')">
+        <div class="platform-icon">🐦</div>
+        <div class="platform-name">Twitter/X</div>
+      </div>
+      <div class="share-platform" onclick="copyLink()">
+        <div class="platform-icon">🔗</div>
+        <div class="platform-name">Copy Link</div>
+      </div>
+    </div>
+    <div class="share-link-row">
+      <input type="text" class="share-link-input" value="https://wishverse.pro/w/abc123" id="shareLinkInput" readonly>
+      <button class="copy-btn" onclick="copyLink()">Copy</button>
+    </div>
+    <div class="qr-section">
+      <div style="font-size:0.82rem;color:var(--text-muted);font-weight:600">Scan QR Code</div>
+      <div class="qr-placeholder">▦</div>
+      <div style="font-size:0.75rem;color:var(--text-muted)">Scan to open on mobile</div>
+    </div>
   </div>
 </div>
 
-<div class="container page" id="page5" style="display: none;">
-  <h1>❤️ You Said Yes! ❤️</h1>
-  <div class="large-heart">💖</div>
-  <p id="finalMessage" class="typewriter"></p>
-  <p id="signature" style="font-weight: bold; margin-top: 20px;"></p>
-  <button onclick="shareAgain()" style="margin-top: 20px;">
-    Share This Happiness 💌
-  </button>
+<!-- Auth Modal -->
+<div class="modal-overlay" id="modal-auth" onclick="closeModalOnBg(event,'auth')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">🌟 Join WishVerse</div>
+      <button class="modal-close" onclick="closeModal('auth')">✕</button>
+    </div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" onclick="setAuthTab(this,'login')">Sign In</div>
+      <div class="auth-tab" onclick="setAuthTab(this,'signup')">Sign Up</div>
+    </div>
+    <div class="social-auth">
+      <button class="social-btn" onclick="googleAuth()">🔵 Google</button>
+      <button class="social-btn" onclick="showToast('📘','Facebook Auth','Connecting to Facebook...')">📘 Facebook</button>
+    </div>
+    <div class="divider">or continue with email</div>
+    <div id="authSignupFields" style="display:none">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" placeholder="Your name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-input" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-input" placeholder="••••••••">
+    </div>
+    <button class="btn-primary" style="width:100%;padding:14px;font-size:1rem" onclick="submitAuth()">Sign In</button>
+    <div style="text-align:center;margin-top:16px;font-size:0.82rem;color:var(--text-muted)">
+      By joining, you agree to our <a href="#" style="color:var(--accent-violet)">Terms</a> & <a href="#" style="color:var(--accent-violet)">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card Detail Modal -->
+<div class="modal-overlay" id="modal-carddetail" onclick="closeModalOnBg(event,'carddetail')">
+  <div class="modal-box" style="max-width:560px">
+    <div class="modal-header">
+      <div class="modal-title" id="detailTitle">Card Details</div>
+      <button class="modal-close" onclick="closeModal('carddetail')">✕</button>
+    </div>
+    <div id="detailCardPreview" style="height:300px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white">
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:16px">
+      <button class="btn-download" onclick="closeModal('carddetail');showPage('create')">✏️ Customize</button>
+      <button class="btn-share-create" onclick="closeModal('carddetail');fireConfetti();openModal('share')">📤 Share Now</button>
+    </div>
+    <div style="display:flex;gap:16px;padding:16px;background:var(--bg-primary);border-radius:var(--radius-md)">
+      <div style="text-align:center;flex:1"><div style="font-size:1.4rem;font-weight:900" id="detailViews">0</div><div style="font-size:0.75rem;color:var(--text-muted)">Views</div></div>
+      <div style="text-align:center;flex:1"><div style="font-size:1.4rem;font-weight:900" id="detailShares">0</div><div style="font-size:0.75rem;color:var(--text-muted)">Shares</div></div>
+      <div style="text-align:center;flex:1"><div style="font-size:1.4rem;font-weight:900" id="detailLikes">0</div><div style="font-size:0.75rem;color:var(--text-muted)">Likes</div></div>
+    </div>
+  </div>
 </div>
 
 <script>
-let currentPage = 0;
-const totalPages = 5;
-let creatorName = "";
-let partnerName = "";
-let isWishActive = false;
+// ============================================================
+// WISHVERSE PRO — COMPLETE APP LOGIC
+// ============================================================
 
-// Start love rain immediately
-startLoveRain();
+// ============ DATA ============
+const categories = [
+  { name:'Birthday', emoji:'🎂', count:248, gradient:'linear-gradient(145deg,#ff6b6b,#feca57)' },
+  { name:'Love', emoji:'💕', count:195, gradient:'linear-gradient(145deg,#ff4757,#ff6b81)' },
+  { name:'Friendship', emoji:'👫', count:167, gradient:'linear-gradient(145deg,#5f72bd,#9b23ea)' },
+  { name:'Eid', emoji:'🌙', count:312, gradient:'linear-gradient(145deg,#1e3c72,#2a5298)' },
+  { name:'Ramadan', emoji:'🕌', count:189, gradient:'linear-gradient(145deg,#134e5e,#71b280)' },
+  { name:'Puja', emoji:'🪔', count:142, gradient:'linear-gradient(145deg,#f7971e,#ffd200)' },
+  { name:'Christmas', emoji:'🎄', count:221, gradient:'linear-gradient(145deg,#134e5e,#c62a47)' },
+  { name:'New Year', emoji:'🎆', count:198, gradient:'linear-gradient(145deg,#0f0c29,#302b63)' },
+  { name:'Anniversary', emoji:'💍', count:134, gradient:'linear-gradient(145deg,#b24592,#f15f79)' },
+  { name:"Mother's Day", emoji:'🌹', count:156, gradient:'linear-gradient(145deg,#ee0979,#ff6a00)' },
+  { name:"Father's Day", emoji:'👔', count:112, gradient:'linear-gradient(145deg,#1f4037,#99f2c8)' },
+  { name:'Wedding', emoji:'💒', count:178, gradient:'linear-gradient(145deg,#c94b4b,#4b134f)' },
+  { name:'Congratulations', emoji:'🏆', count:145, gradient:'linear-gradient(145deg,#f7971e,#ffd200)' },
+  { name:'Sorry', emoji:'🙏', count:98, gradient:'linear-gradient(145deg,#4ca1af,#c4e0e5)' },
+  { name:'Good Morning', emoji:'🌅', count:267, gradient:'linear-gradient(145deg,#f7971e,#ffd200)' },
+  { name:'Good Night', emoji:'🌃', count:234, gradient:'linear-gradient(145deg,#0f0c29,#302b63)' },
+  { name:"Valentine's Day", emoji:'💝', count:189, gradient:'linear-gradient(145deg,#c94b4b,#ff6b81)' },
+  { name:'Independence Day', emoji:'🏳️', count:87, gradient:'linear-gradient(145deg,#006400,#ff0000)' },
+  { name:'Exam Wishes', emoji:'📚', count:145, gradient:'linear-gradient(145deg,#667eea,#764ba2)' },
+  { name:'Motivational', emoji:'💪', count:213, gradient:'linear-gradient(145deg,#f953c6,#b91d73)' },
+  { name:'Islamic Wishes', emoji:'☪️', count:298, gradient:'linear-gradient(145deg,#0f9b58,#1a1a2e)' },
+  { name:'Bengali Festival', emoji:'🇧🇩', count:176, gradient:'linear-gradient(145deg,#006400,#ff0000)' },
+  { name:'Friendship Day', emoji:'🤝', count:143, gradient:'linear-gradient(145deg,#fc5c7d,#6a82fb)' },
+  { name:"Teacher's Day", emoji:'👨‍🏫', count:119, gradient:'linear-gradient(145deg,#4ca1af,#2c3e50)' },
+  { name:'Custom AI Wish', emoji:'🤖', count:892, gradient:'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+];
 
-// Start heart pops occasionally
-setInterval(createHeartPop, 2000);
+const cards = [
+  { id:1, name:'Magical Birthday Wishes', category:'Birthday', emoji:'🎂', gradient:'linear-gradient(145deg,#ff6b6b,#feca57,#ff9ff3)', views:'12.4K', shares:'3.2K', likes:892, desc:'Send a sparkling birthday wish that lights up their day!' },
+  { id:2, name:'Eid Mubarak Blessings', category:'Eid', emoji:'🌙', gradient:'linear-gradient(145deg,#1e3c72,#2a5298,#00b09b)', views:'28.1K', shares:'9.7K', likes:2341, desc:'A divine Eid greeting filled with blessings and joy.' },
+  { id:3, name:'Eternal Love Card', category:'Love', emoji:'💕', gradient:'linear-gradient(145deg,#ff4757,#ff6b81,#ff1744)', views:'18.9K', shares:'6.1K', likes:1567, desc:'Express your deepest love with this romantic animated card.' },
+  { id:4, name:'Best Friends Forever', category:'Friendship', emoji:'👫', gradient:'linear-gradient(145deg,#5f72bd,#9b23ea)', views:'8.7K', shares:'2.4K', likes:634, desc:'Celebrate your unbreakable bond with this friendship card.' },
+  { id:5, name:'Happy New Year 2025', category:'New Year', emoji:'🎆', gradient:'linear-gradient(145deg,#0f0c29,#302b63,#24243e)', views:'45.2K', shares:'18.5K', likes:5821, desc:'Ring in the new year with fireworks and golden wishes!' },
+  { id:6, name:'Good Morning Sunshine', category:'Good Morning', emoji:'🌅', gradient:'linear-gradient(145deg,#f7971e,#ffd200)', views:'22.3K', shares:'7.8K', likes:1892, desc:'Start their day with warmth and golden morning vibes.' },
+  { id:7, name:'Ramadan Kareem', category:'Ramadan', emoji:'🕌', gradient:'linear-gradient(145deg,#134e5e,#71b280)', views:'19.6K', shares:'8.2K', likes:2103, desc:'A serene Ramadan greeting for the holy month.' },
+  { id:8, name:'Congratulations Champion', category:'Congratulations', emoji:'🏆', gradient:'linear-gradient(145deg,#f7971e,#ffd200,#ff6b6b)', views:'7.3K', shares:'2.1K', likes:487, desc:'Celebrate their achievement with golden congratulations!' },
+  { id:9, name:'Islamic Dua Card', category:'Islamic Wishes', emoji:'☪️', gradient:'linear-gradient(145deg,#0f9b58,#1a1a2e)', views:'14.8K', shares:'5.6K', likes:1234, desc:'Share beautiful duas and Islamic blessings.' },
+  { id:10, name:'Shubho Nababarsha', category:'Bengali Festival', emoji:'🇧🇩', gradient:'linear-gradient(145deg,#006400,#228B22,#ff0000)', views:'11.2K', shares:'4.3K', likes:978, desc:'Celebrate Bengali New Year with traditional warmth.' },
+  { id:11, name:'Galaxy Good Night', category:'Good Night', emoji:'🌃', gradient:'linear-gradient(145deg,#0f0c29,#302b63)', views:'16.7K', shares:'5.9K', likes:1456, desc:'Send them to dreamland with this starry good night card.' },
+  { id:12, name:'Valentine Romance', category:"Valentine's Day", emoji:'💝', gradient:'linear-gradient(145deg,#c94b4b,#ff6b81)', views:'31.4K', shares:'12.8K', likes:4201, desc:'The most romantic Valentine\'s card you\'ll ever share.' },
+];
 
-function startLoveRain() {
-  const rainContainer = document.getElementById('loveRain');
-  const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
-  
-  // Create initial hearts
-  for(let i = 0; i < 30; i++) {
-    createRainHeart();
-  }
-  
-  // Add new hearts regularly
-  setInterval(createRainHeart, 300);
-  
-  function createRainHeart() {
-    const heart = document.createElement('div');
-    heart.className = 'love-drop';
-    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (3 + Math.random() * 4) + 's';
-    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
-    heart.style.opacity = 0.3 + Math.random() * 0.7;
-    
-    rainContainer.appendChild(heart);
-    
-    // Remove after animation
-    setTimeout(() => {
-      heart.remove();
-    }, 7000);
-  }
-}
-
-function createHeartPop() {
-  if (!isWishActive) return;
-  
-  const heart = document.createElement('div');
-  heart.className = 'heart-pop';
-  heart.innerHTML = '💖';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.top = Math.random() * 100 + 'vh';
-  heart.style.color = ['#ff4d6d', '#ff8fab', '#ffffff'][Math.floor(Math.random() * 3)];
-  
-  document.body.appendChild(heart);
-  
-  setTimeout(() => {
-    heart.remove();
-  }, 1000);
-}
-
-function createWish() {
-  creatorName = document.getElementById('creatorName').value.trim();
-  partnerName = document.getElementById('partnerName').value.trim();
-  
-  if (!creatorName || !partnerName) {
-    alert('Please enter both names!');
-    return;
-  }
-  
-  // Generate sharing link
-  const baseUrl = window.location.origin + window.location.pathname;
-  const url = `${baseUrl}?creator=${encodeURIComponent(creatorName)}&partner=${encodeURIComponent(partnerName)}`;
-  
-  // Show share section
-  document.getElementById('shareSection').style.display = 'block';
-  document.getElementById('linkBox').innerText = url;
-  
-  // Save for sharing
-  window.currentGeneratedUrl = url;
-  window.waLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(`Hello ${partnerName}! ❤️ I have a special Valentine's wish for you. Click here: ${url}`)}`;
-  
-  // Auto start wish if names are provided in URL
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('creator') && urlParams.get('partner')) {
-    startWish();
-  }
-}
-
-function copyLink() {
-  navigator.clipboard.writeText(window.currentGeneratedUrl);
-  alert('Link copied! Send it to your loved one. ❤️');
-}
-
-function shareWhatsApp() {
-  window.open(window.waLink, '_blank');
-}
-
-function startWish() {
-  const urlParams = new URLSearchParams(window.location.search);
-  creatorName = urlParams.get('creator') || creatorName;
-  partnerName = urlParams.get('partner') || partnerName;
-  
-  if (!creatorName || !partnerName) return;
-  
-  isWishActive = true;
-  document.getElementById('inputPage').style.display = 'none';
-  document.getElementById('page1').style.display = 'block';
-  currentPage = 1;
-  
-  // Start typewriter effects
-  typeWriter('page1Title', `For My Dear ${partnerName}... ❤️`, 50);
-  typeWriter('page1Text', `Today, on this special day, I want to tell you something from the bottom of my heart...`, 40);
-}
-
-function typeWriter(elementId, text, speed = 40) {
-  const element = document.getElementById(elementId);
-  element.classList.remove('typewriter');
-  element.innerHTML = '';
-  
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    } else {
-      element.classList.add('typewriter');
-    }
-  }
-  type();
-}
-
-function nextPage() {
-  document.getElementById(`page${currentPage}`).style.display = 'none';
-  currentPage++;
-  
-  if (currentPage > totalPages) {
-    currentPage = 1;
-  }
-  
-  const pageElement = document.getElementById(`page${currentPage}`);
-  pageElement.style.display = 'block';
-  
-  // Add content based on page
-  switch(currentPage) {
-    case 2:
-      typeWriter('page2Text', `Every single moment with you feels magical, ${partnerName}. Your smile lights up my world and your presence makes everything better. I cherish every memory we've created together.`, 30);
-      break;
-    case 3:
-      typeWriter('page3Text', `I promise to always stand by your side, to support your dreams, to make you laugh, and to love you more with each passing day. You are my everything, ${partnerName}.`, 30);
-      break;
-    case 4:
-      // Question page - no typewriter needed
-      break;
-    case 5:
-      typeWriter('finalMessage', `You've made me the happiest person in the world! This Valentine's Day, I want you to know that my love for you grows stronger every single day. Thank you for being my everything. ❤️`, 30);
-      document.getElementById('signature').innerText = `With all my love,\n${creatorName}`;
-      break;
-  }
-}
-
-function moveNoButton() {
-  const btn = document.getElementById('noBtn');
-  const container = document.querySelector('.container');
-  const containerRect = container.getBoundingClientRect();
-  
-  const maxX = containerRect.width - 100;
-  const maxY = containerRect.height - 50;
-  
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
-  
-  btn.style.position = 'absolute';
-  btn.style.left = `${randomX}px`;
-  btn.style.top = `${randomY}px`;
-  
-  // Add funny messages
-  const messages = ["Are you sure?", "Think again!", "Really?", "Try again!", "Click Yes!"];
-  btn.innerText = messages[Math.floor(Math.random() * messages.length)];
-}
-
-function beMyValentine() {
-  // Create confetti explosion
-  createConfettiExplosion();
-  
-  // Increase love rain
-  for(let i = 0; i < 50; i++) {
-    setTimeout(() => {
-      createSpecialHeart();
-    }, i * 50);
-  }
-  
-  // Go to final page
-  setTimeout(() => {
-    nextPage();
-  }, 1500);
-}
-
-function createConfettiExplosion() {
-  const colors = ['#ff4d6d', '#ff8fab', '#ffffff', '#ffeb3b', '#c9ffbf'];
-  
-  for(let i = 0; i < 100; i++) {
-    setTimeout(() => {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = '50%';
-      confetti.style.top = '50%';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      
-      confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
-      confetti.style.setProperty('--deg', `${Math.random() * 720}deg`);
-      
-      document.body.appendChild(confetti);
-      
-      setTimeout(() => {
-        confetti.remove();
-      }, 2000);
-    }, i * 10);
-  }
-}
-
-function createSpecialHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'love-drop';
-  heart.innerHTML = '💖';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = '2s';
-  heart.style.fontSize = '30px';
-  heart.style.color = '#ffeb3b';
-  heart.style.textShadow = '0 0 20px #ffeb3b';
-  
-  document.getElementById('loveRain').appendChild(heart);
-  
-  setTimeout(() => {
-    heart.remove();
-  }, 2000);
-}
-
-function shareAgain() {
-  document.getElementById('page5').style.display = 'none';
-  document.getElementById('inputPage').style.display = 'block';
-  document.getElementById('shareSection').style.display = 'block';
-  
-  // Highlight the link
-  const linkBox = document.getElementById('linkBox');
-  linkBox.style.animation = 'none';
-  setTimeout(() => {
-    linkBox.style.animation = 'pulse 1s 3';
-  }, 10);
-}
-
-// Check URL parameters on load
-window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('creator') && urlParams.get('partner')) {
-    creatorName = urlParams.get('creator');
-    partnerName = urlParams.get('partner');
-    startWish();
-  }
-  
-  // Add pulse animation for link box
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-  `;
-  document.head.appendChild(style);
+const aiMessages = {
+  Birthday: [
+    "Happy Birthday! 🎂 May this special day bring you endless joy, love, and all the happiness you deserve. Wishing you a year filled with beautiful moments and wonderful memories!",
+    "On your birthday, I hope the stars align and shower you with blessings beyond measure. You make the world brighter just by being in it. Have an absolutely magical day! ✨",
+    "Another year older, another year more amazing! 🎉 May your birthday be as beautiful and extraordinary as you are. Sending you all my love and warmest wishes!"
+  ],
+  Eid: [
+    "Eid Mubarak! 🌙 May the blessings of Allah fill your home with happiness and your heart with peace. Wishing you and your family a joyous and blessed Eid celebration!",
+    "Eid ul-Fitr Mubarak! ☪️ May this holy occasion bring you closer to Allah and fill your life with His divine blessings. Enjoy this beautiful day with loved ones!",
+    "Wishing you Eid filled with joy, love, and togetherness. 🌙 May Allah accept our prayers, forgive our sins, and bless us all. Eid Mubarak, dear friend!"
+  ],
+  Love: [
+    "Every day with you feels like a beautiful dream I never want to wake from. 💕 You are my sunshine, my anchor, and my greatest adventure. I love you more than words can express.",
+    "In a world full of ordinary moments, you make everything extraordinary. 💗 Thank you for being my safe place, my best friend, and the love of my life. Forever yours.",
+    "My heart skips a beat every time I think of you. ❤️ You've changed my world in the most beautiful ways. Loving you is the best thing that ever happened to me."
+  ],
+  default: [
+    "Sending you warm wishes filled with love, joy, and endless positivity! ✨ May this special moment bring you happiness that lasts forever.",
+    "Wishing you all the beautiful things life has to offer. 🌟 May your days be filled with smiles, your heart with love, and your life with abundance.",
+    "Here's to celebrating you! 🎉 You deserve all the happiness in the world. Sending you my warmest wishes and deepest love on this special occasion."
+  ]
 };
+
+const blogPosts = [
+  { title:'50 Best Birthday Wishes for Your Best Friend', tag:'Birthday', emoji:'🎂', date:'Dec 15, 2024', reads:'8.2K', excerpt:'Make your best friend\'s birthday unforgettable with these heartfelt and funny birthday messages that they\'ll love...' },
+  { title:'Eid Mubarak Wishes 2025 — Beautiful Messages', tag:'Eid', emoji:'🌙', date:'Mar 28, 2025', reads:'24.1K', excerpt:'Celebrate Eid with the most beautiful wishes and greetings. Share the joy of Eid ul-Fitr and Eid ul-Adha...' },
+  { title:'Romantic Good Morning Messages to Make Her Smile', tag:'Love', emoji:'☀️', date:'Jan 10, 2025', reads:'12.4K', excerpt:'Start her day with the most romantic good morning wishes. These heartfelt messages will make her fall in love all over...' },
+  { title:'Shubho Nababarsha — Bengali New Year Wishes', tag:'Bengali Festival', emoji:'🇧🇩', date:'Apr 12, 2025', reads:'18.7K', excerpt:'Celebrate Pohela Boishakh with the most beautiful Bengali wishes. Share the joy of the new year with...' },
+  { title:'Islamic Wishes — Powerful Duas & Greetings', tag:'Islamic', emoji:'☪️', date:'Feb 5, 2025', reads:'15.3K', excerpt:'Share the beauty of Islam with these powerful duas and Islamic greetings for every occasion...' },
+  { title:'Friendship Day 2025 — Special Cards & Quotes', tag:'Friendship', emoji:'👫', date:'Aug 1, 2025', reads:'9.8K', excerpt:'Celebrate the most beautiful bond with your friends. These special Friendship Day wishes will make them feel loved...' },
+];
+
+const adminUsers = [
+  { name:'Rayhan Ahmed', email:'rayhan@example.com', cards:127, avatar:'R', color:'#8b5cf6' },
+  { name:'Fatima Khanom', email:'fatima@example.com', cards:89, avatar:'F', color:'#ec4899' },
+  { name:'Mohammad Ali', email:'mali@example.com', cards:213, avatar:'M', color:'#06b6d4' },
+  { name:'Nusrat Jahan', email:'nusrat@example.com', cards:67, avatar:'N', color:'#f59e0b' },
+  { name:'Karim Hassan', email:'karim@example.com', cards:154, avatar:'K', color:'#10b981' },
+];
+
+const chartData = [65, 42, 78, 95, 88, 120, 105];
+
+let currentLang = 'en';
+let currentParticle = '🎉';
+let selectedCardData = null;
+
+// ============ TRANSLATIONS ============
+const t = {
+  en: {
+    badge: '🚀 Most Viral Greeting Platform',
+    h1: 'Touch Hearts',
+    desc: 'Create stunning animated greeting cards for birthdays, Eid, weddings & every special moment. Share instantly on WhatsApp, Facebook & TikTok.',
+    catTitle: 'Find Your Perfect Wish',
+    catSubtitle: 'Choose from 25+ celebration categories crafted with love',
+    catTag: 'All Categories',
+    stat1: 'Cards Created', stat2: 'Countries', stat3: 'Daily Shares',
+    btnCreate: 'Create Your Wish', btnExplore: 'Explore Cards'
+  },
+  bn: {
+    badge: '🚀 সবচেয়ে ভাইরাল গ্রিটিং প্ল্যাটফর্ম',
+    h1: 'হৃদয় স্পর্শ করুন',
+    desc: 'জন্মদিন, ঈদ, বিবাহ ও প্রতিটি বিশেষ মুহূর্তের জন্য সুন্দর অ্যানিমেটেড কার্ড তৈরি করুন। হোয়াটসঅ্যাপ, ফেসবুক ও টিকটকে তাৎক্ষণিক শেয়ার করুন।',
+    catTitle: 'আপনার পারফেক্ট উইশ খুঁজুন',
+    catSubtitle: 'ভালোবাসা দিয়ে তৈরি ২৫+ উদযাপন বিভাগ',
+    catTag: 'সব বিভাগ',
+    stat1: 'কার্ড তৈরি', stat2: 'দেশ', stat3: 'দৈনিক শেয়ার',
+    btnCreate: 'উইশ তৈরি করুন', btnExplore: 'কার্ড অন্বেষণ করুন'
+  }
+};
+
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded', () => {
+  generateStars();
+  renderCategories();
+  renderTrending();
+  renderFeaturedCards();
+  renderFestivalGrid('festivalGrid');
+  renderFestivalGrid('festivalsPageGrid');
+  renderTestimonials();
+  renderExploreCards();
+  renderTrendingCards();
+  renderProfileCards();
+  renderBlog();
+  renderAdminChart();
+  renderAdminUsers();
+  renderAdminCardsTable();
+  initScrollReveal();
+  initParticles('previewParticles','🎉');
+  startCounters();
+});
+
+// ============ STARS ============
+function generateStars() {
+  const container = document.getElementById('stars');
+  for(let i=0;i<120;i++){
+    const star = document.createElement('div');
+    star.className='star';
+    star.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--delay:${Math.random()*6}s`;
+    container.appendChild(star);
+  }
+}
+
+// ============ PAGE ROUTING ============
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-'+name);
+  if(page) { page.classList.add('active'); window.scrollTo(0,0); }
+  // Update nav active
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-'+name);
+  if(navEl) navEl.classList.add('active');
+}
+
+// ============ THEME ============
+function toggleTheme(){
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme', isDark?'light':'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌞' : '🌙';
+}
+
+// ============ LANGUAGE ============
+function setLang(lang) {
+  currentLang = lang;
+  const data = t[lang];
+  safeSet('badge-text', data.badge);
+  safeSet('hero-gradient-text', data.h1);
+  safeSet('hero-desc', data.desc);
+  safeSet('cat-title', data.catTitle);
+  safeSet('cat-subtitle', data.catSubtitle);
+  safeSet('cat-tag', data.catTag);
+  safeSet('stat-label1', data.stat1);
+  safeSet('stat-label2', data.stat2);
+  safeSet('stat-label3', data.stat3);
+  safeSet('btn-create-text', data.btnCreate);
+  safeSet('btn-explore-text', data.btnExplore);
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-bn').classList.toggle('active', lang==='bn');
+}
+
+function safeSet(id, text) {
+  const el = document.getElementById(id);
+  if(el) el.textContent = text;
+}
+
+// ============ MOBILE MENU ============
+function toggleMobileMenu(){
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').classList.remove('active');
+}
+
+// ============ MODALS ============
+function openModal(name){
+  document.getElementById('modal-'+name).classList.add('active');
+}
+function closeModal(name){
+  document.getElementById('modal-'+name).classList.remove('active');
+}
+function closeModalOnBg(e,name){
+  if(e.target===document.getElementById('modal-'+name)) closeModal(name);
+}
+
+// ============ TOAST ============
+function showToast(icon, title, msg) {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className='toast';
+  toast.innerHTML=`<div class="toast-icon">${icon}</div><div class="toast-content"><div class="toast-title">${title}</div><div class="toast-msg">${msg}</div></div>`;
+  container.appendChild(toast);
+  setTimeout(()=>toast.classList.add('show'),10);
+  setTimeout(()=>{ toast.classList.remove('show'); setTimeout(()=>toast.remove(),400); },3500);
+}
+
+// ============ RENDER CATEGORIES ============
+function renderCategories(){
+  const grid = document.getElementById('categoriesGrid');
+  if(!grid) return;
+  grid.innerHTML = categories.map(c=>`
+    <div class="category-card" style="--cat-gradient:${c.gradient}" onclick="filterCategory('${c.name}')">
+      <div class="cat-icon">${c.emoji}</div>
+      <div class="cat-label">${c.name}</div>
+      <div class="cat-count">${c.count} cards</div>
+    </div>
+  `).join('');
+}
+
+// ============ RENDER TRENDING ROW ============
+function renderTrending(){
+  const row = document.getElementById('trendingRow');
+  if(!row) return;
+  const items = cards.slice(0,8);
+  row.innerHTML = items.map((c,i)=>`
+    <div class="trending-item" onclick="openCardDetail(${c.id})">
+      <div class="trending-visual" style="background:${c.gradient};display:flex;align-items:center;justify-content:center;font-size:3.5rem">
+        ${c.emoji}
+        <div class="trending-rank">#${i+1} 🔥</div>
+      </div>
+      <div class="trending-info">
+        <div class="trending-name">${c.name}</div>
+        <div class="trending-stats"><span>👁 ${c.views}</span><span>📤 ${c.shares}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ CARD TEMPLATE ============
+function cardHTML(c) {
+  return `
+    <div class="wish-card" onclick="openCardDetail(${c.id})">
+      <div class="card-visual" style="background:${c.gradient}">
+        <div class="card-visual-content">
+          <div class="card-big-emoji">${c.emoji}</div>
+          <div class="card-title-inner">${c.name}</div>
+        </div>
+        <div class="card-overlay">
+          <div class="card-actions">
+            <button class="card-action-btn" onclick="event.stopPropagation();showPage('create')" title="Customize">✏️</button>
+            <button class="card-action-btn" onclick="event.stopPropagation();fireConfetti();openModal('share')" title="Share">📤</button>
+            <button class="card-action-btn" onclick="event.stopPropagation();saveCard(${c.id})" title="Save">❤️</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-meta">
+          <span class="card-category">${c.category}</span>
+          <span class="card-views">👁 ${c.views}</span>
+        </div>
+        <div class="card-name">${c.name}</div>
+        <div class="card-desc">${c.desc}</div>
+        <div class="card-footer">
+          <div class="card-reactions">
+            <button class="reaction-btn" onclick="event.stopPropagation();react(${c.id},'❤️')">❤️ ${c.likes}</button>
+            <button class="reaction-btn" onclick="event.stopPropagation();react(${c.id},'😮')">😮</button>
+            <button class="reaction-btn" onclick="event.stopPropagation();react(${c.id},'🔥')">🔥</button>
+          </div>
+          <button class="card-share-btn" onclick="event.stopPropagation();fireConfetti();openModal('share')">📤 Share</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFeaturedCards(){
+  const el = document.getElementById('featuredCards');
+  if(el) el.innerHTML = cards.map(cardHTML).join('');
+}
+
+function renderExploreCards(){
+  const el = document.getElementById('exploreCards');
+  if(el) el.innerHTML = cards.map(cardHTML).join('');
+}
+
+function renderTrendingCards(){
+  const el = document.getElementById('trendingCards');
+  if(el) el.innerHTML = [...cards].sort((a,b)=>b.likes-a.likes).map(cardHTML).join('');
+}
+
+function renderProfileCards(){
+  const el = document.getElementById('profileCards');
+  if(el) el.innerHTML = cards.slice(0,6).map(cardHTML).join('');
+}
+
+// ============ FESTIVAL GRID ============
+function renderFestivalGrid(elId){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  const festivals=[
+    {name:'Eid Mubarak',emoji:'🌙',count:'312 cards',gradient:'linear-gradient(145deg,#1e3c72,#2a5298)',big:true},
+    {name:'Birthday',emoji:'🎂',count:'248 cards',gradient:'linear-gradient(145deg,#ff6b6b,#feca57)'},
+    {name:'Ramadan',emoji:'🕌',count:'189 cards',gradient:'linear-gradient(145deg,#134e5e,#71b280)'},
+    {name:"Valentine's",emoji:'💝',count:'189 cards',gradient:'linear-gradient(145deg,#c94b4b,#ff6b81)'},
+    {name:'New Year',emoji:'🎆',count:'198 cards',gradient:'linear-gradient(145deg,#0f0c29,#302b63)'},
+  ];
+  el.innerHTML=festivals.map(f=>`
+    <div class="festival-card${f.big?' big':''}" onclick="filterCategory('${f.name}')">
+      <div class="festival-bg" style="background:${f.gradient}">
+        <div class="festival-emoji">${f.emoji}</div>
+        <div class="festival-name">${f.name}</div>
+        <div class="festival-count">${f.count}</div>
+      </div>
+      <div class="festival-overlay">
+        <button class="festival-btn">Explore ${f.name} →</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ TESTIMONIALS ============
+function renderTestimonials(){
+  const el = document.getElementById('testimonialsGrid');
+  if(!el) return;
+  const reviews=[
+    {name:'Fatima K.',loc:'Dhaka, BD',text:'Sent an Eid card to my family abroad and they cried with happiness! The animations are absolutely stunning.',emoji:'🌙',rating:5},
+    {name:'Arif H.',loc:'Chittagong',text:'The AI message generator wrote the most beautiful birthday message for my mother. She loved it so much!',emoji:'🎂',rating:5},
+    {name:'Priya S.',loc:'Kolkata',text:'I use WishVerse Pro for every occasion now. The cards are so beautiful and shareable on WhatsApp!',emoji:'💕',rating:5},
+  ];
+  el.innerHTML=reviews.map(r=>`
+    <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:28px;transition:var(--transition-spring)" class="scroll-reveal">
+      <div style="font-size:3rem;margin-bottom:16px">${r.emoji}</div>
+      <div style="color:var(--accent-gold);font-size:1rem;margin-bottom:12px">${'⭐'.repeat(r.rating)}</div>
+      <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;font-style:italic">"${r.text}"</p>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--gradient-btn);display:flex;align-items:center;justify-content:center;font-weight:700;color:white">${r.name[0]}</div>
+        <div><div style="font-weight:700;font-size:0.9rem">${r.name}</div><div style="font-size:0.75rem;color:var(--text-muted)">${r.loc}</div></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ BLOG ============
+function renderBlog(){
+  const el = document.getElementById('blogGrid');
+  if(!el) return;
+  el.innerHTML=blogPosts.map(p=>`
+    <div class="blog-card" onclick="showToast('📝','Opening Post','Loading full article...')">
+      <div class="blog-thumb" style="background:var(--bg-secondary)">${p.emoji}</div>
+      <div class="blog-content">
+        <div class="blog-tag">${p.tag}</div>
+        <div class="blog-title">${p.title}</div>
+        <div class="blog-excerpt">${p.excerpt}</div>
+        <div class="blog-meta"><span>📅 ${p.date}</span><span>👁 ${p.reads} reads</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ ADMIN ============
+function renderAdminChart(){
+  const el = document.getElementById('adminChart');
+  if(!el) return;
+  const max = Math.max(...chartData);
+  el.innerHTML=chartData.map((v,i)=>`
+    <div class="chart-bar" style="height:${(v/max)*100}%;opacity:${0.5+i*0.07}" title="Day ${i+1}: ${v*100} visits"></div>
+  `).join('');
+}
+
+function renderAdminUsers(){
+  const el = document.getElementById('adminUserList');
+  if(!el) return;
+  el.innerHTML=adminUsers.map(u=>`
+    <div class="user-item">
+      <div class="user-avatar" style="background:${u.color}">${u.avatar}</div>
+      <div class="user-info">
+        <div class="user-name">${u.name}</div>
+        <div class="user-email">${u.email}</div>
+      </div>
+      <div class="user-stat">${u.cards} cards</div>
+    </div>
+  `).join('');
+}
+
+function renderAdminCardsTable(){
+  const el = document.getElementById('adminCardsTable');
+  if(!el) return;
+  el.innerHTML=cards.slice(0,8).map(c=>`
+    <tr style="border-bottom:1px solid var(--border-glass)">
+      <td style="padding:12px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:1.4rem">${c.emoji}</span>
+        <span style="font-weight:500">${c.name}</span>
+      </td>
+      <td style="padding:12px"><span style="background:rgba(139,92,246,0.1);padding:4px 10px;border-radius:20px;font-size:0.75rem;color:var(--accent-violet)">${c.category}</span></td>
+      <td style="padding:12px;color:var(--text-secondary)">${c.views}</td>
+      <td style="padding:12px;color:var(--text-secondary)">${c.shares}</td>
+      <td style="padding:12px"><span style="background:rgba(16,185,129,0.1);color:#10b981;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:600">✓ Live</span></td>
+      <td style="padding:12px">
+        <div style="display:flex;gap:8px">
+          <button style="padding:5px 10px;border-radius:8px;background:rgba(139,92,246,0.1);color:var(--accent-violet);font-size:0.75px;font-weight:600;font-size:0.75rem" onclick="showToast('✏️','Edit Card','Opening editor...')">Edit</button>
+          <button style="padding:5px 10px;border-radius:8px;background:rgba(244,63,94,0.1);color:var(--accent-rose);font-size:0.75rem;font-weight:600" onclick="showToast('🗑️','Deleted','Card removed from listing')">Del</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function setAdminView(view){
+  showToast('📊','Admin Panel','Loading '+view+'...');
+}
+
+// ============ CUSTOMIZER ============
+function setTheme(el, gradient){
+  document.getElementById('cardPreview').style.background = gradient;
+  document.querySelectorAll('.theme-option').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setFont(el, font){
+  document.getElementById('previewName').style.fontFamily = font;
+  document.getElementById('previewMessage').style.fontFamily = font;
+  document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setParticles(el, emoji){
+  currentParticle = emoji;
+  document.querySelectorAll('#page-create .font-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  if(emoji) initParticles('previewParticles',emoji);
+  else document.getElementById('previewParticles').innerHTML='';
+}
+
+function initParticles(containerId, emoji){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  container.innerHTML='';
+  if(!emoji) return;
+  for(let i=0;i<15;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    p.textContent=emoji;
+    p.style.cssText=`--dur:${3+Math.random()*4}s;--delay:${Math.random()*5}s;--size:${0.8+Math.random()*0.8}rem;--x:${Math.random()*100}%`;
+    container.appendChild(p);
+  }
+}
+
+function updatePreviewCategory(){
+  const cat = document.getElementById('ctrlCategory').value;
+  const found = categories.find(c=>c.name===cat);
+  if(found){
+    document.getElementById('cardPreview').style.background=found.gradient;
+    document.getElementById('previewEmoji').textContent=found.emoji;
+  }
+}
+
+function generateAIMessage(){
+  const cat = document.getElementById('ctrlCategory').value;
+  const msgs = aiMessages[cat] || aiMessages.default;
+  const msg = msgs[Math.floor(Math.random()*msgs.length)];
+  const el = document.getElementById('ctrlMsg');
+  el.value='';
+  let i=0;
+  showToast('🤖','AI Writing...','Generating personalized message...');
+  const interval=setInterval(()=>{
+    if(i<msg.length){ el.value+=msg[i++]; document.getElementById('previewMessage').textContent=el.value; }
+    else clearInterval(interval);
+  },20);
+}
+
+// ============ EXPLORE FILTER ============
+let currentFilter='all';
+function setExploreFilter(filter, el){
+  currentFilter=filter;
+  document.querySelectorAll('#exploreTabs .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  filterCards();
+}
+
+function filterCards(){
+  const search = (document.getElementById('exploreSearch')||{}).value?.toLowerCase()||'';
+  const filtered = cards.filter(c=>{
+    const matchFilter = currentFilter==='all' || c.category===currentFilter;
+    const matchSearch = !search || c.name.toLowerCase().includes(search) || c.category.toLowerCase().includes(search);
+    return matchFilter && matchSearch;
+  });
+  const el = document.getElementById('exploreCards');
+  if(el) el.innerHTML = filtered.length ? filtered.map(cardHTML).join('') : `
+    <div class="empty-state" style="grid-column:1/-1">
+      <div class="empty-state-icon">🔍</div>
+      <div class="empty-state-title">No cards found</div>
+      <div class="empty-state-text">Try a different search or category</div>
+      <button class="btn-primary" onclick="setExploreFilter('all',document.querySelector('#exploreTabs .tab'))">Show All Cards</button>
+    </div>
+  `;
+}
+
+function filterCategory(name){
+  showPage('explore');
+  setTimeout(()=>{
+    const tabs = document.querySelectorAll('#exploreTabs .tab');
+    const tab = [...tabs].find(t=>t.textContent.includes(name.split("'")[0]));
+    if(tab){ setExploreFilter(name,tab); }
+    else { currentFilter=name; filterCards(); }
+  },100);
+}
+
+function loadMoreCards(){
+  showToast('🔄','Loading More','Fetching more cards...');
+  setTimeout(()=>showToast('✅','Loaded!','12 new cards added'),1500);
+}
+
+// ============ CARD DETAIL ============
+function openCardDetail(id){
+  const c=cards.find(x=>x.id===id);
+  if(!c) return;
+  selectedCardData=c;
+  document.getElementById('detailTitle').textContent=c.name;
+  document.getElementById('detailViews').textContent=c.views;
+  document.getElementById('detailShares').textContent=c.shares;
+  document.getElementById('detailLikes').textContent=c.likes;
+  const preview=document.getElementById('detailCardPreview');
+  preview.style.background=c.gradient;
+  preview.innerHTML=`<div style="font-size:5rem;animation:emojiFloat 3s ease-in-out infinite">${c.emoji}</div><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;margin-top:16px">${c.name}</div><div style="font-size:0.85rem;opacity:0.8;margin-top:8px">${c.category}</div>`;
+  openModal('carddetail');
+}
+
+// ============ REACTIONS ============
+function react(id, emoji){
+  showToast(emoji,'Reacted!','Your reaction was added!');
+}
+function saveCard(id){
+  showToast('❤️','Saved!','Card saved to your collection!');
+}
+
+// ============ SHARE ============
+function shareToFacebook(){
+  showToast('📘','Sharing to Facebook','Opening Facebook share dialog...');
+  closeModal('share');
+}
+function shareToWhatsApp(){
+  const text=encodeURIComponent('Check out this beautiful greeting card from WishVerse Pro! https://wishverse.pro/w/abc123');
+  window.open(`https://wa.me/?text=${text}`,'_blank');
+  closeModal('share');
+}
+function shareToTikTok(){
+  showToast('🎵','TikTok Share','Creating reel-ready version...');
+  closeModal('share');
+}
+function copyLink(){
+  navigator.clipboard?.writeText('https://wishverse.pro/w/abc123').catch(()=>{});
+  showToast('🔗','Link Copied!','Paste anywhere to share!');
+}
+
+// ============ CONFETTI ============
+function fireConfetti(){
+  const colors=['#ff6b6b','#feca57','#8b5cf6','#ec4899','#06b6d4','#10b981','#f59e0b'];
+  const emojis=['🎉','⭐','💕','🌟','✨','🎊','💫'];
+  for(let i=0;i<50;i++){
+    const piece=document.createElement('div');
+    const isEmoji=Math.random()>0.5;
+    piece.className='confetti-piece';
+    if(isEmoji){
+      piece.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+      piece.style.fontSize=`${0.8+Math.random()*0.8}rem`;
+    } else {
+      piece.style.background=colors[Math.floor(Math.random()*colors.length)];
+      piece.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    }
+    piece.style.cssText+= `left:${Math.random()*100}vw;top:-20px;--dur:${1.5+Math.random()*2}s`;
+    document.body.appendChild(piece);
+    setTimeout(()=>piece.remove(),(1.5+Math.random()*2)*1000);
+  }
+}
+
+// ============ AUTH ============
+function setAuthTab(el,tab){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const signupFields=document.getElementById('authSignupFields');
+  if(signupFields) signupFields.style.display=tab==='signup'?'block':'none';
+}
+function googleAuth(){
+  showToast('🔵','Google Auth','Connecting to Google...');
+  setTimeout(()=>{ closeModal('auth'); showToast('✅','Welcome!','You are now signed in!'); },1200);
+}
+function submitAuth(){
+  closeModal('auth');
+  showToast('✅','Welcome!','Successfully signed in to WishVerse Pro!');
+  showPage('profile');
+}
+
+// ============ MUSIC PLAYER ============
+let playing=true;
+const tracks=[{title:'Wish You Well',artist:'WishVerse Radio'},{title:'Celebration Vibes',artist:'Happy Beats'},{title:'Eid Night',artist:'Islamic Sounds'}];
+let currentTrack=0;
+function togglePlay(){
+  playing=!playing;
+  document.getElementById('playBtn').textContent=playing?'⏸':'▶';
+  const icon=document.querySelector('.music-icon');
+  if(icon) icon.style.animationPlayState=playing?'running':'paused';
+}
+function nextTrack(){
+  currentTrack=(currentTrack+1)%tracks.length;
+  updateMusicDisplay();
+}
+function prevTrack(){
+  currentTrack=(currentTrack-1+tracks.length)%tracks.length;
+  updateMusicDisplay();
+}
+function updateMusicDisplay(){
+  const t=tracks[currentTrack];
+  const titleEl=document.querySelector('.music-title');
+  const artistEl=document.querySelector('.music-artist');
+  if(titleEl) titleEl.textContent=t.title;
+  if(artistEl) artistEl.textContent=t.artist;
+}
+
+// ============ PROFILE TABS ============
+function setProfileTab(el,tab){
+  document.querySelectorAll('.profile-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  if(tab==='saved') showToast('❤️','Saved Cards','Loading your saved cards...');
+  else if(tab==='activity') showToast('📊','Activity','Loading your stats...');
+  else if(tab==='settings') showToast('⚙️','Settings','Opening profile settings...');
+}
+
+// ============ SCROLL REVEAL ============
+function initScrollReveal(){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('revealed'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+}
+
+// ============ ANIMATED COUNTERS ============
+function startCounters(){
+  animateCounter('stat1','2.4M+');
+  animateCounter('stat2','190+');
+  animateCounter('stat3','50K+');
+}
+function animateCounter(id, finalVal){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const num=parseInt(finalVal.replace(/[^0-9]/g,''));
+  const suffix=finalVal.replace(/[0-9]/g,'');
+  let current=0; const steps=40;
+  const interval=setInterval(()=>{
+    current+=num/steps;
+    if(current>=num){ current=num; clearInterval(interval); }
+    const display=current>=1000?`${(current/1000).toFixed(1)}${suffix.includes('K')?'K':suffix.includes('M')?'M':''}+`:Math.floor(current)+'';
+    el.textContent=num>=1000?`${(num/1000).toFixed(1)}${suffix}`:finalVal;
+  },30);
+}
+
+// ============ NAVBAR SCROLL ============
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  if(nav) nav.style.boxShadow=window.scrollY>50?'0 4px 32px rgba(0,0,0,0.3)':'none';
+});
+
+// ============ KEYBOARD SHORTCUTS ============
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));
+    closeMobileMenu();
+  }
+});
+
+// ============ PWA ============
+if('serviceWorker' in navigator){
+  // Registered separately via sw.js
+}
+
+console.log('%c🌟 WishVerse Pro', 'font-size:24px;font-weight:bold;background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent');
+console.log('%cThe Premium Greeting Card Platform', 'color:#a09bc8;font-size:14px');
 </script>
 </body>
 </html>
